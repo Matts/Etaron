@@ -171,9 +171,7 @@ public class Main extends Canvas implements Runnable
         easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_THE_CLIMB));
         easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_CAVEMAN));
         easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_THE_FALL));
-        easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_INVADERS));
-        easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_TEST));
-        
+     
         mediumLevelPage.add(resourceLoader.get(ImageResource.LEVEL_UNDER_FIRE));
        
         hardLevelPage.add(resourceLoader.get(ImageResource.LEVEL_GET_WREKT));
@@ -367,10 +365,10 @@ public class Main extends Canvas implements Runnable
             graphics.setColor(new Color(185, 0, 255));
             graphics.fillRect(25, 0, 10, windowHeight);
 
-            setFontAttributes(graphics, new Color(255, 255, 255), 96);
+            setFontAttributes(graphics, defaultFont, new Color(255, 255, 255), 96);
             graphics.drawString(title, windowWidth / 2 - 220, 120);
 
-            setFontAttributes(graphics, new Color(255, 255, 255), 14);
+            setFontAttributes(graphics, defaultFont, new Color(255, 255, 255), 14);
             graphics.drawString("Version:" + " " + version, 40, 726);
 
             if(user != null)
@@ -385,14 +383,14 @@ public class Main extends Canvas implements Runnable
 
             switch(currentPage) 
             {
-	            case 0: setFontAttributes(graphics, new Color(0, 255, 255), 32);
+	            case 0: setFontAttributes(graphics, defaultFont, new Color(0, 255, 255), 32);
 	
 						graphics.drawString("Shop", windowWidth / 2 - 52, 165);
 						
 						graphics.setColor(new Color(255, 255, 255));
 				break;
             
-                case 1: setFontAttributes(graphics, new Color(0, 255, 0), 32);
+                case 1: setFontAttributes(graphics, defaultFont, new Color(0, 255, 0), 32);
 
 						graphics.drawString("Easy", windowWidth / 2 - 52, 165);
 
@@ -420,7 +418,7 @@ public class Main extends Canvas implements Runnable
                 
 				break;
                     
-                case 2: setFontAttributes(graphics, new Color(255, 255, 0), 32);
+                case 2: setFontAttributes(graphics, defaultFont, new Color(255, 255, 0), 32);
 
 						graphics.drawString("Medium", windowWidth / 2 - 80, 165);
 
@@ -447,7 +445,7 @@ public class Main extends Canvas implements Runnable
 						}
                 break;
                    
-                case 3: setFontAttributes(graphics, new Color(255, 0, 0), 32);
+                case 3: setFontAttributes(graphics, defaultFont, new Color(255, 0, 0), 32);
 
 						graphics.drawString("Hard", windowWidth / 2 - 52, 165);
 
@@ -505,7 +503,10 @@ public class Main extends Canvas implements Runnable
 
             if(displayInfo) 
 			{
-                setFontAttributes(graphics, new Color(255, 255, 255), 13);
+            	graphics.setColor(new Color(0, 0, 0));
+            	graphics.fillRect(0, 0, 155, 115);
+            	
+                setFontAttributes(graphics, defaultFont, new Color(255, 255, 255), 13);
 
                 graphics.drawString("VERSION:" + " " + version, 15, 25);
                 graphics.drawString("FPS:" + " " + absoluteFrames, 15, 40);
@@ -519,7 +520,7 @@ public class Main extends Canvas implements Runnable
             graphics.setColor(new Color(0, 0, 0));
             graphics.fillRect(0, windowHeight - 50, windowWidth, 50);
             
-            setFontAttributes(graphics, new Color(255, 255, 255), 36);
+            setFontAttributes(graphics, defaultFont, new Color(255, 255, 255), 36);
             graphics.drawString("SCORE: " + levelScore, 12, windowHeight - 10);
         }
         
@@ -532,7 +533,7 @@ public class Main extends Canvas implements Runnable
 
     private void displayScore(Graphics graphics, int i, int xModifier, int yModifier) 
 	{
-        setFontAttributes(graphics, new Color(255, 255, 255), 10);
+        setFontAttributes(graphics, defaultFont, new Color(255, 255, 255), 10);
 
         if(allScores[i + 1] != null) 
 		{
@@ -553,10 +554,10 @@ public class Main extends Canvas implements Runnable
 
     // Sets the font style the game uses
 
-    private void setFontAttributes(Graphics graphics, Color color, int size) 
+    private void setFontAttributes(Graphics graphics, Font font, Color color, int size) 
 	{
         graphics.setColor(color);
-        graphics.setFont(defaultFont.deriveFont(Font.PLAIN, size));
+        graphics.setFont(font.deriveFont(Font.PLAIN, size));
     }
     
     

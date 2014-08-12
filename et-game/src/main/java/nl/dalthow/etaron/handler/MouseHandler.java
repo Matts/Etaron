@@ -156,7 +156,7 @@ public class MouseHandler implements MouseListener
 
 			if(event.getX() > 855 && event.getX() < 895 && event.getY() > 325 && event.getY() < 405) 
 			{
-				if (Main.currentPage < 3) 
+				if(Main.currentPage < 3) 
 				{
 					Main.currentPage++;
 				}

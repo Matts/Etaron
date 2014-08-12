@@ -11,6 +11,7 @@ package nl.dalthow.etaron.object;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
@@ -41,8 +42,6 @@ public class Player extends WorldObject
     private float playerHeight;
     private float playerGravity;
    
-    private int type;
-    
     @Autowired
     private ObjectHandler handler;
 
@@ -71,8 +70,6 @@ public class Player extends WorldObject
 
         playerGravity = 0.5F;
         maximumVelocity = 15F;
-        
-        type = 0;
     }
 
 
@@ -80,8 +77,6 @@ public class Player extends WorldObject
 
     public void tick(LinkedList<WorldObject> objectList) 
     {
-    	System.out.println(yVel);
-    	
         xPos += xVel;
         yPos += yVel;
 
@@ -135,7 +130,7 @@ public class Player extends WorldObject
             {
                 if(getBoundsTop().intersects(temporaryObject.getBounds())) 
                 {
-                    yPos = temporaryObject.getPosY() + (playerHeight / 2);
+                	yPos = temporaryObject.getPosY() + (playerHeight / 2);
                     yVel = 0;
                 }
 
@@ -186,12 +181,33 @@ public class Player extends WorldObject
             
             else if(temporaryObject.getId() == Identifier.TRAMPOLINE)
             {
-                if(getBounds().intersects(temporaryObject.getBounds())) 
+                if(getBoundsBottom().intersects(temporaryObject.getBounds())) 
                 {
-                	yVel = -27.48F;
+                	yVel = -27.53F;
+                }
+                
+                else if(getBoundsTop().intersects(temporaryObject.getBounds())) 
+                {
+                	yVel = 27.53F;
+                }
+                
+                else if(getBoundsRight().intersects(temporaryObject.getBounds()))
+                {
+                    xPos = temporaryObject.getPosX() - playerWidth;
+                }
+
+                else if(getBoundsLeft().intersects(temporaryObject.getBounds())) 
+                {
+                    xPos = temporaryObject.getPosX() + playerWidth;
+                }
+                
+                if(getBounds().intersects(temporaryObject.getBounds()))
+                {
+                    soundHandler.loadSound(SoundResource.BOING);
+                    soundHandler.soundClip.start();
                 }
             } 
-            
+                        
             else if(temporaryObject.getId() == Identifier.FLAG) 
             {
                 if(getBounds().intersects(temporaryObject.getBounds()))
@@ -283,7 +299,7 @@ public class Player extends WorldObject
 
     public Rectangle getBoundsBottom() 
     {
-        return new Rectangle((int) xPos + ((int) playerWidth / 4), (int) yPos + ((int) playerHeight / 2), (int) playerWidth / 2, (int) playerHeight / 2 + 2);
+        return new Rectangle((int) xPos + ((int) playerWidth / 4), (int) yPos + ((int) playerHeight / 2), (int) playerWidth / 2, (int) playerHeight / 2);
     }
 
     public Rectangle getBoundsLeft() 

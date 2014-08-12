@@ -16,7 +16,8 @@ public enum SoundResource
     COIN("sound/coin.wav"),
     BULLET("sound/bullet.wav"),
     FAILURE("sound/failure.wav"),
-    VICTORY("sound/victory.wav");
+    VICTORY("sound/victory.wav"), 
+    BOING("sound/boing.wav");
 
     
     // Declaration

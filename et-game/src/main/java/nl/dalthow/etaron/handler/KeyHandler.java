@@ -31,7 +31,7 @@ public class KeyHandler extends KeyAdapter
 
     @Autowired
     private SoundHandler soundHandler;
-
+    
     public static WorldObject cameraShouldFocus;
 
 
@@ -49,42 +49,45 @@ public class KeyHandler extends KeyAdapter
     {
         int currentKey = event.getKeyCode();
 
-        for(int i = 0; i < objectHandler.objects.size(); i++) 
+        if(Main.currentState == State.GAME)
         {
-            WorldObject temporaryObject = objectHandler.objects.get(i);
-
-            if(temporaryObject.equals(cameraShouldFocus)) 
-            {
-                if(currentKey == KeyEvent.VK_W && !temporaryObject.isJumping()) 
-                {
-                    temporaryObject.setVelY(-Main.playerJumpingHeight);
-                    temporaryObject.setJumping(true);
-                }
-
-                if(currentKey == KeyEvent.VK_D) 
-                {
-                    temporaryObject.setVelX(Main.playerMovementSpeed);
-                    temporaryObject.setFacing(1);
-                }
-
-                if(currentKey == KeyEvent.VK_A) 
-                {
-                    temporaryObject.setVelX(-Main.playerMovementSpeed);
-                    temporaryObject.setFacing(0);
-                }
-                
-                if(currentKey == KeyEvent.VK_F3) 
-                {
-                    Main.displayInfo = true;
-                }
-            }
-        }
-
-        if(currentKey == KeyEvent.VK_ESCAPE) 
-        {
-            Main.currentState = State.MENU;
-
-            soundHandler.musicClip.stop();
+	        for(int i = 0; i < objectHandler.objects.size(); i++) 
+	        {
+	            WorldObject temporaryObject = objectHandler.objects.get(i);
+	
+	            if(temporaryObject.equals(cameraShouldFocus)) 
+	            {
+	                if(currentKey == KeyEvent.VK_W && !temporaryObject.isJumping()) 
+	                {
+	                    temporaryObject.setVelY(-Main.playerJumpingHeight);
+	                    temporaryObject.setJumping(true);
+	                }
+	
+	                if(currentKey == KeyEvent.VK_D) 
+	                {
+	                    temporaryObject.setVelX(Main.playerMovementSpeed);
+	                    temporaryObject.setFacing(1);
+	                }
+	
+	                if(currentKey == KeyEvent.VK_A) 
+	                {
+	                    temporaryObject.setVelX(-Main.playerMovementSpeed);
+	                    temporaryObject.setFacing(0);
+	                }
+	                
+	                if(currentKey == KeyEvent.VK_F3) 
+	                {
+	                    Main.displayInfo = true;
+	                }
+	            }
+	        }
+	
+	        if(currentKey == KeyEvent.VK_ESCAPE) 
+	        {
+	            Main.currentState = State.MENU;
+	
+	            soundHandler.musicClip.stop();
+	        }
         }
     }
 
@@ -95,33 +98,54 @@ public class KeyHandler extends KeyAdapter
     {
         int currentKey = event.getKeyCode();
 
-        for(int i = 0; i < objectHandler.objects.size(); i++) 
+        if(Main.currentState == State.MENU)
         {
-            WorldObject temporaryObject = objectHandler.objects.get(i);
-
-            if(temporaryObject.equals(cameraShouldFocus))
-            {
-                if(currentKey == KeyEvent.VK_D)
-                {
-                    temporaryObject.setVelX(0);
-                }
-
-                if(currentKey == KeyEvent.VK_A)
-                {
-                    temporaryObject.setVelX(0);
-                }
-
-                if(currentKey == KeyEvent.VK_F3) 
-                {
-                    Main.displayInfo = false;
-                }
-            }
+        	if(currentKey == KeyEvent.VK_A)
+        	{
+        		if(Main.currentPage > 0) 
+				{
+					Main.currentPage--;
+				}
+        	}
+        	
+        	if(currentKey == KeyEvent.VK_D)
+        	{
+        		if(Main.currentPage < 3) 
+				{
+					Main.currentPage++;
+				}
+        	}
         }
         
         if(Main.currentState == State.GAME)
         {
+	        for(int i = 0; i < objectHandler.objects.size(); i++) 
+	        {
+	            WorldObject temporaryObject = objectHandler.objects.get(i);
+	
+	            if(temporaryObject.equals(cameraShouldFocus))
+	            {
+	                if(currentKey == KeyEvent.VK_D)
+	                {
+	                    temporaryObject.setVelX(0);
+	                }
+	
+	                if(currentKey == KeyEvent.VK_A)
+	                {
+	                    temporaryObject.setVelX(0);
+	                }
+	
+	                if(currentKey == KeyEvent.VK_F3) 
+	                {
+	                    Main.displayInfo = false;
+	                }
+	            }
+	        }
+        
         	if(currentKey == KeyEvent.VK_Q) 
             {
+	            cameraShouldFocus.setVelX(0);
+	            
                 LinkedList<Integer> allPlayers = new LinkedList<Integer>();
                 
 	            for(int i = 0; i < objectHandler.objects.size(); i++) 

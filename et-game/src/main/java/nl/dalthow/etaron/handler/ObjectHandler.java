@@ -153,7 +153,7 @@ public class ObjectHandler
 
                 else if(red == 0 && green == 255 && blue == 0) 
                 {
-                    addObject(new Block((i * 32), (j * 32), 2, 0, 0, Identifier.FLAG));
+                	addObject(new Block((i * 32), (j * 32), 2, 0, 0, Identifier.FLAG));
                 }
                 
                 else if(red == 255 && green == 200 && blue == 0) 
