@@ -1,0 +1,42 @@
+#!/bin/bash
+#   Usage: . setenv
+
+# Application name
+export APP_NAME="etaron-server"
+# User allowed to run the script
+export USER_RUN=root
+
+# How long(seconds) to wait for a process to die (multiplied x10 times)
+WAITTODIE=5
+# How long(seconds) to wait for a process to start
+WAITTOSTART=5
+
+# Application home directory
+export APP_HOME=/srv/etaron/current
+
+# Setup directory paths
+export  APP_BIN_DIR=${APP_HOME}/bin
+export  APP_CONF_DIR=${APP_HOME}/conf
+export  APP_LIB_DIR=${APP_HOME}/lib
+export  APP_LOG_DIR=${APP_HOME}/log
+export  APP_PID_FILE=${APP_BIN_DIR}/${APP_NAME}.pid
+
+# Add property resources directory to classpath
+APP_CLASSPATH=${APP_CONF_DIR}
+
+# Add .jar into classpath
+for library in ${APP_LIB_DIR}/*.jar; do
+    APP_CLASSPATH="${APP_CLASSPATH}:${library}"
+done
+export APP_CLASSPATH
+
+# Java main() class
+export APP_MAINCLASS=nl.dalthow.etaron.Launcher
+
+# Application environment variables
+APP_ENV=" "
+export APP_ENV
+
+# set JVM properties
+JVMPROP="-server -Xms64M -Xmx256M "
+export JVMPROP
