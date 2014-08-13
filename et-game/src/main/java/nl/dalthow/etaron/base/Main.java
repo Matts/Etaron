@@ -503,9 +503,6 @@ public class Main extends Canvas implements Runnable
 
             if(displayInfo) 
 			{
-            	graphics.setColor(new Color(0, 0, 0));
-            	graphics.fillRect(0, 0, 155, 115);
-            	
                 setFontAttributes(graphics, defaultFont, new Color(255, 255, 255), 13);
 
                 graphics.drawString("VERSION:" + " " + version, 15, 25);
