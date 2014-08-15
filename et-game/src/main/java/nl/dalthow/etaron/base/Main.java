@@ -150,6 +150,8 @@ public class Main extends Canvas implements Runnable
         loadLevelImages();
         loadMusic();
         
+		getShopInfo();
+		
         addKeyListener(keyHandler);
         addMouseListener(mouseHandler);
     }
@@ -524,11 +526,28 @@ public class Main extends Canvas implements Runnable
         graphics.dispose();
         bufferObject.show();
     }
+
     
+    // Reads the information needed for the shop
+    
+    private void getShopInfo() 
+    {
+    	try
+    	{
+    		
+    	}
+    	
+    	catch(Exception error)
+    	{
+    		logger.error("Could not connect to the shop.");
+    	}
+    }
+	
 
     // Displays the score for each level
 
-    private void displayScore(Graphics graphics, int i, int xModifier, int yModifier) 
+
+	private void displayScore(Graphics graphics, int i, int xModifier, int yModifier) 
 	{
         setFontAttributes(graphics, defaultFont, new Color(255, 255, 255), 10);
 
