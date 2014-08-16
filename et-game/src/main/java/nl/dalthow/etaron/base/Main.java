@@ -30,6 +30,7 @@ import javax.swing.SwingUtilities;
 import nl.dalthow.etaron.framework.Camera;
 import nl.dalthow.etaron.framework.State;
 import nl.dalthow.etaron.framework.WorldObject;
+import nl.dalthow.etaron.framework.XMLConverter;
 import nl.dalthow.etaron.handler.ObjectHandler;
 import nl.dalthow.etaron.handler.SoundHandler;
 import nl.dalthow.etaron.loader.FontResource;
@@ -37,12 +38,15 @@ import nl.dalthow.etaron.loader.ImageResource;
 import nl.dalthow.etaron.loader.ResourceLoader;
 import nl.dalthow.etaron.loader.SongResource;
 import nl.dalthow.etaron.loader.SoundResource;
+import nl.dalthow.etaron.model.Product;
 import nl.dalthow.etaron.model.User;
 import nl.dalthow.etaron.window.Base;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -59,6 +63,9 @@ public class Main extends Canvas implements Runnable
     
     @Autowired
     private ResourceLoader resourceLoader;
+
+    @Autowired
+    private ApplicationContext applicationContext;
 
     private int temporaryFrames, absoluteFrames;
     private int temporaryTicks, absoluteTicks;
@@ -534,6 +541,15 @@ public class Main extends Canvas implements Runnable
     {
     	try
     	{
+    		String XML_FILE_NAME = "http://dalthow.nl/software/etaron/shop.xml";
+    		
+    		XMLConverter converter = (XMLConverter) applicationContext.getBean("XMLConverter");
+    		
+    		System.out.println("Convert XML back to Object!");
+    		//from XML to object
+    		Product customer2 = (Product)converter.convertFromXMLToObject(XML_FILE_NAME);
+    		System.out.println(customer2);
+    		System.out.println("Done");
     		
     	}
     	
