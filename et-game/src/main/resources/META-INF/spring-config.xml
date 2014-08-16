@@ -19,7 +19,7 @@
 	</bean>
 	
 	<bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller" >
-		<property name="mappingLocation" value="classpath:mapping.xml" />
+		<property name="mappingLocation" value="classpath:mapping/product.xml" />
 	</bean>
 
     <import resource="classpath:META-INF/ws/client-config.xml"/>

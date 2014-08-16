@@ -46,7 +46,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -67,10 +66,12 @@ public class Main extends Canvas implements Runnable
     @Autowired
     private ApplicationContext applicationContext;
 
+    private LinkedList<Product> products = new LinkedList<>();
+    
     private int temporaryFrames, absoluteFrames;
     private int temporaryTicks, absoluteTicks;
     private int tickToMenu;
-
+    
     private static WorldObject cameraFocus;
     
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
@@ -397,6 +398,11 @@ public class Main extends Canvas implements Runnable
 						graphics.drawString("Shop", windowWidth / 2 - 52, 165);
 						
 						graphics.setColor(new Color(255, 255, 255));
+						
+						for(int i = 0; i < products.size(); i++)
+						{
+							graphics.drawString(products.get(i).getName(), 64, 200);
+						}
 				break;
             
                 case 1: setFontAttributes(graphics, defaultFont, new Color(0, 255, 0), 32);
@@ -424,7 +430,6 @@ public class Main extends Canvas implements Runnable
 
 							graphics.drawImage(easyLevelPage.get(i), xModifier, yModifier, 128, 128, this);
 						}
-                
 				break;
                     
                 case 2: setFontAttributes(graphics, defaultFont, new Color(255, 255, 0), 32);
@@ -545,12 +550,7 @@ public class Main extends Canvas implements Runnable
     		
     		XMLConverter converter = (XMLConverter) applicationContext.getBean("XMLConverter");
     		
-    		System.out.println("Convert XML back to Object!");
-    		//from XML to object
-    		Product customer2 = (Product)converter.convertFromXMLToObject(XML_FILE_NAME);
-    		System.out.println(customer2);
-    		System.out.println("Done");
-    		
+    		products.add((Product)converter.convertFromXMLToObject(XML_FILE_NAME));
     	}
     	
     	catch(Exception error)
