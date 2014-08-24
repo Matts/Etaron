@@ -144,8 +144,6 @@ public class KeyHandler extends KeyAdapter
         
         	if(currentKey == KeyEvent.VK_Q) 
             {
-	            cameraShouldFocus.setVelX(0);
-	            
                 LinkedList<Integer> allPlayers = new LinkedList<Integer>();
                 
 	            for(int i = 0; i < objectHandler.objects.size(); i++) 
@@ -171,6 +169,8 @@ public class KeyHandler extends KeyAdapter
 		            }
 		            
 		            Main.setCameraFocus(cameraShouldFocus);
+
+		            cameraShouldFocus.setVelX(0);
 	            }
             }
         }

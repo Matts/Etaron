@@ -31,8 +31,8 @@ public class Camera
 	
 	public void tick(WorldObject object) 
 	{
-		xPos = - object.getPosX() + Main.windowWidth / 2 - 16;
-		yPos = - object.getPosY() + Main.windowHeight / 2 - 16 - 25;
+		xPos =- object.getPosX() + Main.windowWidth / 2 - 16;
+		yPos =- object.getPosY() + Main.windowHeight / 2 - 16 - 25;
 		
 		if(object.id == Identifier.PLAYER)
 		{

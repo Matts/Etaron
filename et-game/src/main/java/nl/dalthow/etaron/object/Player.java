@@ -11,17 +11,14 @@ package nl.dalthow.etaron.object;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
 import nl.dalthow.etaron.base.Main;
 import nl.dalthow.etaron.framework.Identifier;
-import nl.dalthow.etaron.framework.State;
 import nl.dalthow.etaron.framework.WorldObject;
 import nl.dalthow.etaron.handler.ObjectHandler;
 import nl.dalthow.etaron.handler.SoundHandler;
-import nl.dalthow.etaron.loader.ImageResource;
 import nl.dalthow.etaron.loader.ResourceLoader;
 import nl.dalthow.etaron.loader.SoundResource;
 import nl.dalthow.etaron.service.AccessClient;
