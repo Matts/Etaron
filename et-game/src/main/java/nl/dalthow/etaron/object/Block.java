@@ -14,14 +14,9 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 import nl.dalthow.etaron.framework.Identifier;
 import nl.dalthow.etaron.framework.WorldObject;
 
-@Component
-@Scope("prototype")
 public class Block extends WorldObject
 {
 	// Declaration

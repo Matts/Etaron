@@ -30,7 +30,6 @@ import javax.swing.SwingUtilities;
 import nl.dalthow.etaron.framework.Camera;
 import nl.dalthow.etaron.framework.State;
 import nl.dalthow.etaron.framework.WorldObject;
-import nl.dalthow.etaron.framework.XMLConverter;
 import nl.dalthow.etaron.handler.ObjectHandler;
 import nl.dalthow.etaron.handler.SoundHandler;
 import nl.dalthow.etaron.loader.FontResource;
@@ -158,8 +157,6 @@ public class Main extends Canvas implements Runnable
         loadLevelImages();
         loadMusic();
         
-		getShopInfo();
-		
         addKeyListener(keyHandler);
         addMouseListener(mouseHandler);
     }
@@ -539,29 +536,8 @@ public class Main extends Canvas implements Runnable
         bufferObject.show();
     }
 
-    
-    // Reads the information needed for the shop
-    
-    private void getShopInfo() 
-    {
-    	try
-    	{
-    		String XML_FILE_NAME = "http://dalthow.nl/software/etaron/shop.xml";
-    		
-    		XMLConverter converter = (XMLConverter) applicationContext.getBean("XMLConverter");
-    		
-    		products.add((Product)converter.convertFromXMLToObject(XML_FILE_NAME));
-    	}
-    	
-    	catch(Exception error)
-    	{
-    		logger.error("Could not connect to the shop.");
-    	}
-    }
-	
 
     // Displays the score for each level
-
 
 	private void displayScore(Graphics graphics, int i, int xModifier, int yModifier) 
 	{

@@ -15,17 +15,7 @@ public class Product {
 	String price;
 	
 	boolean sale;
-	int id;
 
-	public int getId() 
-	{
-		return id;
-	}
-
-	public void setId(int id) 
-	{
-		this.id = id;
-	}
 
 	public String getPrice()
 	{
