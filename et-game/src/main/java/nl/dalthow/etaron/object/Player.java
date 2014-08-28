@@ -296,7 +296,7 @@ public class Player extends WorldObject
 
     public Rectangle getBoundsBottom() 
     {
-        return new Rectangle((int) xPos + ((int) playerWidth / 4), (int) yPos + ((int) playerHeight / 2), (int) playerWidth / 2, (int) playerHeight / 2 + 1);
+        return new Rectangle((int) xPos + ((int) playerWidth / 4), (int) yPos + ((int) playerHeight / 2), (int) playerWidth / 2, (int) playerHeight / 2);
     }
 
     public Rectangle getBoundsLeft() 
