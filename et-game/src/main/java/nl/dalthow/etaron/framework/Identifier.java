@@ -19,7 +19,5 @@ public enum Identifier
 	LAVA(),
 	COIN(), 
 	FLAG(),
-	SWITCH(),
-	DOOR(),
 	DECOR();
 }
