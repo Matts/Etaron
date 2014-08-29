@@ -201,7 +201,6 @@ public class ObjectHandler
     }
 
     
-    
     // Removes a object from the list
 
     public void removeObject(WorldObject object) 
