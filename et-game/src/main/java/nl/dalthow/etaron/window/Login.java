@@ -177,7 +177,7 @@ public class Login
                 
                 catch(ConnectionException error)
                 {
-                    JOptionPane.showMessageDialog(frame, error.getMessage(), "Connection error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, error.getMessage(), "Connection error.", JOptionPane.ERROR_MESSAGE);
                     logger.error(error.getMessage(), error);
                 }
             }
