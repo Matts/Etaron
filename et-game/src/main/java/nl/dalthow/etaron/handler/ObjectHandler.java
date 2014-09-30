@@ -51,9 +51,9 @@ public class ObjectHandler
     
     public void tick() 
     {
-        for(int Par1 = 0; Par1 < objects.size(); Par1++) 
+        for(int i = 0; i < objects.size(); i++) 
         {
-            temporaryObject = objects.get(Par1);
+            temporaryObject = objects.get(i);
             temporaryObject.tick(objects);
         }
     }
