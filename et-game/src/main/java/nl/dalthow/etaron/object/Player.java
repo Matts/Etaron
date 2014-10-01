@@ -123,126 +123,129 @@ public class Player extends WorldObject
         {
             WorldObject temporaryObject = handler.objects.get(i);
 
-            if(temporaryObject.getId() == Identifier.BLOCK) 
+            if(temporaryObject.getBounds().intersects(getUpdateBounds()))
             {
-                if(getBoundsTop().intersects(temporaryObject.getBounds())) 
-                {
-                	yPos = temporaryObject.getPosY() + (playerHeight / 2);
-                    yVel = 0;
-                }
-
-                if(getBoundsBottom().intersects(temporaryObject.getBounds())) 
-                {
-                    yPos = temporaryObject.getPosY() - playerHeight;
-                    yVel = 0;
-
-                    isJumping = false;
-                    isFalling = false;
-                }
-
-                if(getBoundsRight().intersects(temporaryObject.getBounds()))
-                {
-                    xPos = temporaryObject.getPosX() - playerWidth;
-                }
-
-                if(getBoundsLeft().intersects(temporaryObject.getBounds())) 
-                {
-                    xPos = temporaryObject.getPosX() + playerWidth;
-                }
-            } 
-            
-            else if(temporaryObject.getId() == Identifier.LAVA)
-            {
-                if(getBounds().intersects(temporaryObject.getBounds())) 
-                {
-                	soundHandler.loadSound(SoundResource.FAILURE);
-                    soundHandler.soundClip.start();
-                	handler.reloadLevel();
-
-                    return;
-                }
-            }
-            
-            else if(temporaryObject.getId() == Identifier.COIN)
-            {
-                if(getBounds().intersects(temporaryObject.getBounds())) 
-                {
-                    Main.levelScore += 25;
-
-                    soundHandler.loadSound(SoundResource.COIN);
-                    soundHandler.soundClip.start();
-
-                    handler.removeObject(temporaryObject);
-                }
-            } 
-            
-            else if(temporaryObject.getId() == Identifier.TRAMPOLINE)
-            {
-                if(getBoundsBottom().intersects(temporaryObject.getBounds())) 
-                {
-                	yVel = -27.53F;
-                }
-                
-                else if(getBoundsTop().intersects(temporaryObject.getBounds())) 
-                {
-                	yVel = 27.53F;
-                }
-                
-                else if(getBoundsRight().intersects(temporaryObject.getBounds()))
-                {
-                    xPos = temporaryObject.getPosX() - playerWidth;
-                }
-
-                else if(getBoundsLeft().intersects(temporaryObject.getBounds())) 
-                {
-                    xPos = temporaryObject.getPosX() + playerWidth;
-                }
-                
-                if(getBounds().intersects(temporaryObject.getBounds()))
-                {
-                    soundHandler.loadSound(SoundResource.BOING);
-                    soundHandler.soundClip.start();
-                }
-            } 
-                        
-            else if(temporaryObject.getId() == Identifier.FLAG) 
-            {
-                if(getBounds().intersects(temporaryObject.getBounds()))
-                {
-					soundHandler.loadSound(SoundResource.VICTORY);
-					
-					soundHandler.soundClip.start();
-                    
-                	if(Main.user != null) 
-                    {
-                        saveScore();
-                    }
-
-                	try
-                	{
-	                    handler.clearLevel();
-	                	
-	            		switch(Main.currentPage) 
-	                    {
-	                    	case 1: handler.loadLevel(Main.easyLevelPage.get(Main.currentLevel++));
-	                    	
-	                    	break;
-	                    	
-	                    	case 2: handler.loadLevel(Main.mediumLevelPage.get(Main.currentLevel++ - 13));
-	                    	
-	                    	break;
-	                    	
-	                    	case 3: handler.loadLevel(Main.hardLevelPage.get(Main.currentLevel++ - 25));
+	            if(temporaryObject.getId() == Identifier.BLOCK) 
+	            {
+	                if(getBoundsTop().intersects(temporaryObject.getBounds())) 
+	                {
+	                	yPos = temporaryObject.getPosY() + (playerHeight / 2);
+	                    yVel = 0;
+	                }
 	
-	                    	break;
+	                if(getBoundsBottom().intersects(temporaryObject.getBounds())) 
+	                {
+	                    yPos = temporaryObject.getPosY() - playerHeight;
+	                    yVel = 0;
+	
+	                    isJumping = false;
+	                    isFalling = false;
+	                }
+	
+	                if(getBoundsRight().intersects(temporaryObject.getBounds()))
+	                {
+	                    xPos = temporaryObject.getPosX() - playerWidth;
+	                }
+	
+	                if(getBoundsLeft().intersects(temporaryObject.getBounds())) 
+	                {
+	                    xPos = temporaryObject.getPosX() + playerWidth;
+	                }
+	            } 
+	            
+	            else if(temporaryObject.getId() == Identifier.LAVA)
+	            {
+	                if(getBounds().intersects(temporaryObject.getBounds())) 
+	                {
+	                	soundHandler.loadSound(SoundResource.FAILURE);
+	                    soundHandler.soundClip.start();
+	                	handler.reloadLevel();
+	
+	                    return;
+	                }
+	            }
+	            
+	            else if(temporaryObject.getId() == Identifier.COIN)
+	            {
+	                if(getBounds().intersects(temporaryObject.getBounds())) 
+	                {
+	                    Main.levelScore += 25;
+	
+	                    soundHandler.loadSound(SoundResource.COIN);
+	                    soundHandler.soundClip.start();
+	
+	                    handler.removeObject(temporaryObject);
+	                }
+	            } 
+	            
+	            else if(temporaryObject.getId() == Identifier.TRAMPOLINE)
+	            {
+	                if(getBoundsBottom().intersects(temporaryObject.getBounds())) 
+	                {
+	                	yVel = -27.53F;
+	                }
+	                
+	                else if(getBoundsTop().intersects(temporaryObject.getBounds())) 
+	                {
+	                	yVel = 27.53F;
+	                }
+	                
+	                else if(getBoundsRight().intersects(temporaryObject.getBounds()))
+	                {
+	                    xPos = temporaryObject.getPosX() - playerWidth;
+	                }
+	
+	                else if(getBoundsLeft().intersects(temporaryObject.getBounds())) 
+	                {
+	                    xPos = temporaryObject.getPosX() + playerWidth;
+	                }
+	                
+	                if(getBounds().intersects(temporaryObject.getBounds()))
+	                {
+	                    soundHandler.loadSound(SoundResource.BOING);
+	                    soundHandler.soundClip.start();
+	                }
+	            } 
+	                        
+	            else if(temporaryObject.getId() == Identifier.FLAG) 
+	            {
+	                if(getBounds().intersects(temporaryObject.getBounds()))
+	                {
+						soundHandler.loadSound(SoundResource.VICTORY);
+						
+						soundHandler.soundClip.start();
+	                    
+	                	if(Main.user != null) 
+	                    {
+	                        saveScore();
 	                    }
-                	}
-                	
-                	catch(Exception error)
-                	{
-                		logger.error(error.getMessage(), error);
-                	}
-                }
+	
+	                	try
+	                	{
+		                    handler.clearLevel();
+		                	
+		            		switch(Main.currentPage) 
+		                    {
+		                    	case 1: handler.loadLevel(Main.easyLevelPage.get(Main.currentLevel++));
+		                    	
+		                    	break;
+		                    	
+		                    	case 2: handler.loadLevel(Main.mediumLevelPage.get(Main.currentLevel++ - 13));
+		                    	
+		                    	break;
+		                    	
+		                    	case 3: handler.loadLevel(Main.hardLevelPage.get(Main.currentLevel++ - 25));
+		
+		                    	break;
+		                    }
+	                	}
+	                	
+	                	catch(Exception error)
+	                	{
+	                		logger.error(error.getMessage(), error);
+	                	}
+	                }
+	            }
             }
         }
     }
@@ -307,5 +310,10 @@ public class Player extends WorldObject
     public Rectangle getBoundsRight() 
     {
         return new Rectangle((int) xPos + ((int) playerWidth - 5), (int) yPos + 3, (int) 5, (int) playerHeight - 6);
+    }
+    
+    public Rectangle getUpdateBounds() 
+    {
+        return new Rectangle((int) xPos - 64, (int) yPos - 64, (int) playerWidth + 128, (int) playerHeight + 128);
     }
 }
