@@ -157,30 +157,48 @@ public class KeyHandler extends KeyAdapter
 	                }
 	            }
 	            
+	            Player oldKeyHolder;
+	            Player newKeyHolder;
+	            
 	            if(Main.getCameraFocus().equals(objectHandler.objects.get(allPlayers.getFirst())))
         		{
-	            	Player oldKeyHolder = (Player)objectHandler.objects.get(allPlayers.getFirst());
-	            	
-	            	if(oldKeyHolder.hasKey)
-	            	{
-	            		Player newKeyHolder = (Player)objectHandler.objects.get(allPlayers.getLast());
-			            
-		            	oldKeyHolder.hasKey = false;
-		            	newKeyHolder.hasKey = true;
-	            	}
+	            	oldKeyHolder = (Player)objectHandler.objects.get(allPlayers.getFirst());
+            		newKeyHolder = (Player)objectHandler.objects.get(allPlayers.getLast());
+		            
+            		if(oldKeyHolder.getUpdateBounds().intersects(newKeyHolder.getUpdateBounds()))
+            		{
+	            		if(oldKeyHolder.hasKey && newKeyHolder.hasKey)
+	            		{
+	            			return;
+	            		}
+	            		
+	            		else if(oldKeyHolder.hasKey)
+		            	{
+			            	oldKeyHolder.hasKey = false;
+			            	newKeyHolder.hasKey = true;
+		            	}
+            		}
         		}
 	            
 	            else
 	            {
-	            	Player oldKeyHolder = (Player)objectHandler.objects.get(allPlayers.getLast());
+	            	oldKeyHolder = (Player)objectHandler.objects.get(allPlayers.getLast());
+	            	newKeyHolder = (Player)objectHandler.objects.get(allPlayers.getFirst());
 	            	
-	            	if(oldKeyHolder.hasKey)
-	            	{
-	            		Player newKeyHolder = (Player)objectHandler.objects.get(allPlayers.getFirst());
-			            
-		            	oldKeyHolder.hasKey = false;
-		            	newKeyHolder.hasKey = true;
-	            	}
+	            	if(oldKeyHolder.getUpdateBounds().intersects(newKeyHolder.getUpdateBounds()))
+            		{
+		            	if(oldKeyHolder.hasKey && newKeyHolder.hasKey)
+	            		{
+	            			return;
+	            		}
+	            		
+		            	else if(oldKeyHolder.hasKey)
+		            	{
+		            		
+			            	oldKeyHolder.hasKey = false;
+			            	newKeyHolder.hasKey = true;
+		            	}
+            		}
 	            }
             }
 	        

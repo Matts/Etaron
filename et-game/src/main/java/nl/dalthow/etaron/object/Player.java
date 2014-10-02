@@ -117,13 +117,19 @@ public class Player extends WorldObject
     	graphics.setColor(new Color(0, 0, 255));
     	graphics.fillRect((int)xPos, (int)yPos, (int)playerWidth,(int)playerHeight);
     	
+    	graphics.drawRect((int)xPos - 64, (int)yPos - 64, (int)playerWidth + 128, (int)playerHeight + 128);
+    	
     	if(hasKey)
     	{
     		graphics.setColor(new Color(175, 175, 175));
-			graphics.fillOval((int)xPos + 8, (int)yPos, 14, 14);
+			graphics.fillOval((int)xPos - 7, (int)yPos + 24 + 1, 12, 12);
 			
 			graphics.setColor(new Color(175, 175, 175));
-			graphics.fillRect((int)xPos + 15, (int)yPos + 12, 4, 20);
+			
+			graphics.fillRect((int)xPos - 2, (int)yPos + 24 + 12, 4, 19);
+			graphics.fillRect((int)xPos - 7, (int)yPos + 24 + 16, 7, 3);
+			graphics.fillRect((int)xPos - 9, (int)yPos + 24 + 21, 7, 3);
+			graphics.fillRect((int)xPos - 6, (int)yPos + 24 + 26, 4, 3);
     	}
     }
 
@@ -137,7 +143,7 @@ public class Player extends WorldObject
             WorldObject temporaryObject = handler.objects.get(i);
 
             if(temporaryObject.getBounds().intersects(getUpdateBounds()))
-            {
+            {            	
 	            if(temporaryObject.getId() == Identifier.BLOCK) 
 	            {
 	                if(getBoundsTop().intersects(temporaryObject.getBounds())) 
@@ -180,11 +186,11 @@ public class Player extends WorldObject
 	            
 	            else if(temporaryObject.getId() == Identifier.KEY)
 	            {
-	                if(getBounds().intersects(temporaryObject.getBounds())) 
+	                if(getBounds().intersects(temporaryObject.getBounds()) && hasKey == false) 
 	                {
 	                	hasKey = true;
 	                	
-	                	soundHandler.loadSound(SoundResource.COIN); // TODO find a sound effect for the key
+	                	soundHandler.loadSound(SoundResource.KEY);
 	                    soundHandler.soundClip.start();
 	
 	                	handler.removeObject(temporaryObject);
@@ -244,6 +250,9 @@ public class Player extends WorldObject
 	                    {
 	                    	handler.removeObject(temporaryObject);
 	                    	hasKey = false;
+	                    	
+	                    	soundHandler.loadSound(SoundResource.DOOR);
+							soundHandler.soundClip.start();
 	                    }
 	                }
 	
@@ -259,6 +268,9 @@ public class Player extends WorldObject
 	                    {
 	                    	handler.removeObject(temporaryObject);
 	                    	hasKey = false;
+	                    	
+	                    	soundHandler.loadSound(SoundResource.DOOR);
+							soundHandler.soundClip.start();
 	                    }
 	                }
 	
@@ -270,6 +282,9 @@ public class Player extends WorldObject
 	                    {
 	                    	handler.removeObject(temporaryObject);
 	                    	hasKey = false;
+	                    	
+	                    	soundHandler.loadSound(SoundResource.DOOR);
+							soundHandler.soundClip.start();
 	                    }
 	                }
 	
@@ -281,6 +296,9 @@ public class Player extends WorldObject
 	                    {
 	                    	handler.removeObject(temporaryObject);
 	                    	hasKey = false;
+	                    	
+	                    	soundHandler.loadSound(SoundResource.DOOR);
+							soundHandler.soundClip.start();
 	                    }
 	                }
 	            } 
@@ -290,7 +308,6 @@ public class Player extends WorldObject
 	                if(getBounds().intersects(temporaryObject.getBounds()))
 	                {
 						soundHandler.loadSound(SoundResource.VICTORY);
-						
 						soundHandler.soundClip.start();
 	                    
 	                	if(Main.user != null) 

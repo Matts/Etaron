@@ -111,12 +111,16 @@ public class Item extends WorldObject
 		}
 		
 		if(id == Identifier.KEY)
-		{
+		{				
 			graphics.setColor(new Color(175, 175, 175));
-			graphics.fillOval((int)xPos + 8, (int)yPos, 14, 14);
+			graphics.fillOval((int)xPos + 10, (int)yPos + 1, 12, 12);
 			
 			graphics.setColor(new Color(175, 175, 175));
-			graphics.fillRect((int)xPos + 15, (int)yPos + 12, 4, 20);
+			
+			graphics.fillRect((int)xPos + 15, (int)yPos + 12, 4, 19);
+			graphics.fillRect((int)xPos + 10, (int)yPos + 16, 7, 3);
+			graphics.fillRect((int)xPos + 8, (int)yPos + 21, 7, 3);
+			graphics.fillRect((int)xPos + 11, (int)yPos + 26, 4, 3);
 		}
 	}
 	
