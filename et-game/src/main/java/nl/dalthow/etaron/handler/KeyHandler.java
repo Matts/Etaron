@@ -17,6 +17,7 @@ import nl.dalthow.etaron.base.Main;
 import nl.dalthow.etaron.framework.Identifier;
 import nl.dalthow.etaron.framework.State;
 import nl.dalthow.etaron.framework.WorldObject;
+import nl.dalthow.etaron.object.Player;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -142,6 +143,21 @@ public class KeyHandler extends KeyAdapter
 	            }
 	        }
         
+	        if(currentKey == KeyEvent.VK_E) 
+            {
+	        	LinkedList<Integer> allPlayers = new LinkedList<Integer>();
+	                
+	            for(int i = 0; i < objectHandler.objects.size(); i++) 
+	            {
+	                WorldObject temporaryObject = objectHandler.objects.get(i);
+	            	
+	                if(temporaryObject.getId() == Identifier.PLAYER) 
+	                {
+	                	allPlayers.add(i);
+	                }
+	            }
+            }
+	        
         	if(currentKey == KeyEvent.VK_Q) 
             {
                 LinkedList<Integer> allPlayers = new LinkedList<Integer>();
