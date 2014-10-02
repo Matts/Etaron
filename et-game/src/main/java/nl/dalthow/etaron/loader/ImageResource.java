@@ -26,6 +26,7 @@ public enum ImageResource
     LEVEL_VOLCANO("/level/easy/volcano.png"),
     LEVEL_TWINS("/level/easy/twins.png"),
     LEVEL_RESCUE("/level/easy/rescue.png"),
+    LEVEL_SEWER("/level/easy/sewer.png"),
     
     LEVEL_UNDER_FIRE("/level/medium/under fire.png"),
     

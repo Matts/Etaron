@@ -37,7 +37,6 @@ import nl.dalthow.etaron.loader.ImageResource;
 import nl.dalthow.etaron.loader.ResourceLoader;
 import nl.dalthow.etaron.loader.SongResource;
 import nl.dalthow.etaron.loader.SoundResource;
-import nl.dalthow.etaron.model.Product;
 import nl.dalthow.etaron.model.User;
 import nl.dalthow.etaron.window.Base;
 
@@ -65,8 +64,6 @@ public class Main extends Canvas implements Runnable
     @Autowired
     private ApplicationContext applicationContext;
 
-    private LinkedList<Product> products = new LinkedList<>();
-    
     private int temporaryFrames, absoluteFrames;
     private int temporaryTicks, absoluteTicks;
     private int tickToMenu;
@@ -182,6 +179,7 @@ public class Main extends Canvas implements Runnable
         easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_VOLCANO));
         easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_TWINS));
         easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_RESCUE));
+        easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_SEWER));
         
         mediumLevelPage.add(resourceLoader.get(ImageResource.LEVEL_UNDER_FIRE));
        
@@ -399,11 +397,6 @@ public class Main extends Canvas implements Runnable
 						graphics.drawString("Shop", windowWidth / 2 - 52, 165);
 						
 						graphics.setColor(new Color(255, 255, 255));
-						
-						for(int i = 0; i < products.size(); i++)
-						{
-							graphics.drawString(products.get(i).getName(), 64, 200);
-						}
 				break;
             
                 case 1: setFontAttributes(graphics, defaultFont, new Color(0, 255, 0), 32);

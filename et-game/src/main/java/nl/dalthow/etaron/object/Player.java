@@ -289,31 +289,31 @@ public class Player extends WorldObject
 
     public Rectangle getBounds() 
     {
-        return new Rectangle((int) xPos, (int) yPos, (int) playerWidth, (int) playerHeight);
+        return new Rectangle((int)xPos, (int)yPos, (int)playerWidth, (int)playerHeight);
     }
 
     public Rectangle getBoundsTop() 
     {
-        return new Rectangle((int) xPos + ((int) playerWidth / 4), (int) yPos, (int) playerWidth / 2, (int) playerHeight / 2);
+        return new Rectangle((int)xPos + ((int)playerWidth / 4), (int)yPos, (int)playerWidth / 2, (int)playerHeight / 2);
     }
 
     public Rectangle getBoundsBottom() 
     {
-        return new Rectangle((int) xPos + ((int) playerWidth / 4), (int) yPos + ((int) playerHeight / 2), (int) playerWidth / 2, (int) playerHeight / 2);
+        return new Rectangle((int)xPos + ((int)playerWidth / 4), (int)yPos + ((int)playerHeight / 2), (int)playerWidth / 2, (int)playerHeight / 2);
     }
 
     public Rectangle getBoundsLeft() 
     {
-        return new Rectangle((int) xPos, (int) yPos + 3, (int) 5, (int) playerHeight - 6);
+        return new Rectangle((int)xPos, (int)yPos + 3, 5, (int)playerHeight - 6);
     }
 
     public Rectangle getBoundsRight() 
     {
-        return new Rectangle((int) xPos + ((int) playerWidth - 5), (int) yPos + 3, (int) 5, (int) playerHeight - 6);
+        return new Rectangle((int)xPos + ((int)playerWidth - 5), (int)yPos + 3, 5, (int)playerHeight - 6);
     }
     
     public Rectangle getUpdateBounds() 
     {
-        return new Rectangle((int) xPos - 64, (int) yPos - 64, (int) playerWidth + 128, (int) playerHeight + 128);
+        return new Rectangle((int)xPos - 64, (int)yPos - 64, (int)playerWidth + 128, (int)playerHeight + 128);
     }
 }
