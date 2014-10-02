@@ -38,6 +38,7 @@ import nl.dalthow.etaron.loader.ResourceLoader;
 import nl.dalthow.etaron.loader.SongResource;
 import nl.dalthow.etaron.loader.SoundResource;
 import nl.dalthow.etaron.model.User;
+import nl.dalthow.etaron.object.Player;
 import nl.dalthow.etaron.window.Base;
 
 import org.slf4j.Logger;

@@ -156,6 +156,32 @@ public class KeyHandler extends KeyAdapter
 	                	allPlayers.add(i);
 	                }
 	            }
+	            
+	            if(Main.getCameraFocus().equals(objectHandler.objects.get(allPlayers.getFirst())))
+        		{
+	            	Player oldKeyHolder = (Player)objectHandler.objects.get(allPlayers.getFirst());
+	            	
+	            	if(oldKeyHolder.hasKey)
+	            	{
+	            		Player newKeyHolder = (Player)objectHandler.objects.get(allPlayers.getLast());
+			            
+		            	oldKeyHolder.hasKey = false;
+		            	newKeyHolder.hasKey = true;
+	            	}
+        		}
+	            
+	            else
+	            {
+	            	Player oldKeyHolder = (Player)objectHandler.objects.get(allPlayers.getLast());
+	            	
+	            	if(oldKeyHolder.hasKey)
+	            	{
+	            		Player newKeyHolder = (Player)objectHandler.objects.get(allPlayers.getFirst());
+			            
+		            	oldKeyHolder.hasKey = false;
+		            	newKeyHolder.hasKey = true;
+	            	}
+	            }
             }
 	        
         	if(currentKey == KeyEvent.VK_Q) 
@@ -174,6 +200,8 @@ public class KeyHandler extends KeyAdapter
 	            
 	            if(allPlayers.size() > 1)
 	            {
+		            cameraShouldFocus.setVelX(0);
+		         
 		            if(Main.getCameraFocus().equals(objectHandler.objects.get(allPlayers.getFirst())))
 	        		{
 		            	cameraShouldFocus = objectHandler.objects.get(allPlayers.getLast());
@@ -185,8 +213,6 @@ public class KeyHandler extends KeyAdapter
 		            }
 		            
 		            Main.setCameraFocus(cameraShouldFocus);
-
-		            cameraShouldFocus.setVelX(0);
 	            }
             }
         }
