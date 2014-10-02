@@ -201,7 +201,7 @@ public class Player extends WorldObject
 	                {
 	                    Main.levelScore += 25;
 	
-	                    soundHandler.loadSound(SoundResource.COIN);
+	                    soundHandler.loadSound(SoundResource.PICKUP);
 	                    soundHandler.soundClip.start();
 	
 	                    handler.removeObject(temporaryObject);

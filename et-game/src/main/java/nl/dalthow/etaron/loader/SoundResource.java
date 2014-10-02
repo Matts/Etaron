@@ -13,7 +13,7 @@ public enum SoundResource
 {
 	// A list of all the sounds available in the game
 	
-    COIN("sound/coin.wav"),
+    PICKUP("sound/pickup.wav"),
     BULLET("sound/bullet.wav"),
     FAILURE("sound/failure.wav"),
     VICTORY("sound/victory.wav"), 

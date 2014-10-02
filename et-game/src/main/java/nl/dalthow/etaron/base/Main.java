@@ -195,7 +195,7 @@ public class Main extends Canvas implements Runnable
     private void loadMusic() 
     {
         soundHandler.loadSong(SongResource.ANTS);
-        soundHandler.loadSound(SoundResource.COIN);
+        soundHandler.loadSound(SoundResource.PICKUP);
 
         soundHandler.changeVolume(musicVolume, soundHandler.musicClip);
         soundHandler.changeVolume(soundVolume, soundHandler.soundClip);
