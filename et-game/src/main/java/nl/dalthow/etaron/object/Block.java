@@ -21,11 +21,12 @@ public class Block extends WorldObject
 {
 	// Declaration
 	
-	private int type;
 	private int direction;
 	private int amount;
 	
 	private int timePassed;
+
+	public int type;
 	
 	
 	// Constructor
@@ -171,6 +172,12 @@ public class Block extends WorldObject
 		else if(type == 6)
 		{
 			graphics.setColor(new Color(255, 175, 175));
+			graphics.fillRect((int)xPos, (int)yPos, 32, 32);
+		}
+		
+		else if(type == 7)
+		{
+			graphics.setColor(new Color(155, 75, 0));
 			graphics.fillRect((int)xPos, (int)yPos, 32, 32);
 		}
 	}

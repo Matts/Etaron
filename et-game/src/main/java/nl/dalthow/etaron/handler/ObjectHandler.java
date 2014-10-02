@@ -145,10 +145,20 @@ public class ObjectHandler
                 {
                     addObject(new Block((i * 32), (j * 32), 6, 0, 0, Identifier.TRAMPOLINE));
                 }
+                
+                else if(red == 155 && green == 75 && blue == 0) 
+                {
+                	addObject(new Block((i * 32), (j * 32), 7, 0, 0, Identifier.DOOR));
+                }
 
                 else if(red == 255 && green == 255 && blue == 0)
                 {
                     addObject(new Item((i * 32), (j * 32), 0, Identifier.COIN));
+                }
+                
+                else if(red == 175 && green == 175 && blue == 175)
+                {
+                    addObject(new Item((i * 32), (j * 32), 0, Identifier.KEY));
                 }
 
                 else if(red == 0 && green == 255 && blue == 0) 

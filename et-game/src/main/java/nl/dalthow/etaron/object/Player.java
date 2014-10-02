@@ -38,6 +38,8 @@ public class Player extends WorldObject
     private float playerWidth;
     private float playerHeight;
     private float playerGravity;
+    
+    private boolean hasKey;
    
     @Autowired
     private ObjectHandler handler;
@@ -67,6 +69,8 @@ public class Player extends WorldObject
 
         playerGravity = 0.5F;
         maximumVelocity = 15F;
+        
+        hasKey = false;
     }
 
 
@@ -112,6 +116,15 @@ public class Player extends WorldObject
     {
     	graphics.setColor(new Color(0, 0, 255));
     	graphics.fillRect((int)xPos, (int)yPos, (int)playerWidth,(int)playerHeight);
+    	
+    	if(hasKey)
+    	{
+    		graphics.setColor(new Color(175, 175, 175));
+			graphics.fillOval((int)xPos + 8, (int)yPos, 14, 14);
+			
+			graphics.setColor(new Color(175, 175, 175));
+			graphics.fillRect((int)xPos + 15, (int)yPos + 12, 4, 20);
+    	}
     }
 
 
@@ -165,6 +178,19 @@ public class Player extends WorldObject
 	                }
 	            }
 	            
+	            else if(temporaryObject.getId() == Identifier.KEY)
+	            {
+	                if(getBounds().intersects(temporaryObject.getBounds())) 
+	                {
+	                	hasKey = true;
+	                	
+	                	soundHandler.loadSound(SoundResource.COIN); // TODO find a sound effect for the key
+	                    soundHandler.soundClip.start();
+	
+	                	handler.removeObject(temporaryObject);
+	                }
+	            }
+	            
 	            else if(temporaryObject.getId() == Identifier.COIN)
 	            {
 	                if(getBounds().intersects(temporaryObject.getBounds())) 
@@ -204,6 +230,58 @@ public class Player extends WorldObject
 	                {
 	                    soundHandler.loadSound(SoundResource.BOING);
 	                    soundHandler.soundClip.start();
+	                }
+	            } 
+	            
+	            else if(temporaryObject.getId() == Identifier.DOOR)
+	            {
+	            	if(getBoundsTop().intersects(temporaryObject.getBounds())) 
+	                {
+	                	yPos = temporaryObject.getPosY() + (playerHeight / 2);
+	                    yVel = 0;
+	                    
+	                    if(hasKey)
+	                    {
+	                    	handler.removeObject(temporaryObject);
+	                    	hasKey = false;
+	                    }
+	                }
+	
+	                if(getBoundsBottom().intersects(temporaryObject.getBounds())) 
+	                {
+	                    yPos = temporaryObject.getPosY() - playerHeight;
+	                    yVel = 0;
+	
+	                    isJumping = false;
+	                    isFalling = false;
+	                    
+	                    if(hasKey)
+	                    {
+	                    	handler.removeObject(temporaryObject);
+	                    	hasKey = false;
+	                    }
+	                }
+	
+	                if(getBoundsRight().intersects(temporaryObject.getBounds()))
+	                {
+	                    xPos = temporaryObject.getPosX() - playerWidth;
+	                    
+	                    if(hasKey)
+	                    {
+	                    	handler.removeObject(temporaryObject);
+	                    	hasKey = false;
+	                    }
+	                }
+	
+	                if(getBoundsLeft().intersects(temporaryObject.getBounds())) 
+	                {
+	                    xPos = temporaryObject.getPosX() + playerWidth;
+	                    
+	                    if(hasKey)
+	                    {
+	                    	handler.removeObject(temporaryObject);
+	                    	hasKey = false;
+	                    }
 	                }
 	            } 
 	                        

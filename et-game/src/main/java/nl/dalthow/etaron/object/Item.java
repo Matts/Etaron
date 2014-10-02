@@ -109,6 +109,15 @@ public class Item extends WorldObject
 				graphics.fillOval((int)xPos + 16, (int)yPos, 0, 32);
 			}
 		}
+		
+		if(id == Identifier.KEY)
+		{
+			graphics.setColor(new Color(175, 175, 175));
+			graphics.fillOval((int)xPos + 8, (int)yPos, 14, 14);
+			
+			graphics.setColor(new Color(175, 175, 175));
+			graphics.fillRect((int)xPos + 15, (int)yPos + 12, 4, 20);
+		}
 	}
 	
 	
