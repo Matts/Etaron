@@ -117,8 +117,6 @@ public class Player extends WorldObject
     	graphics.setColor(new Color(0, 0, 255));
     	graphics.fillRect((int)xPos, (int)yPos, (int)playerWidth,(int)playerHeight);
     	
-    	graphics.drawRect((int)xPos - 64, (int)yPos - 64, (int)playerWidth + 128, (int)playerHeight + 128);
-    	
     	if(hasKey)
     	{
     		graphics.setColor(new Color(175, 175, 175));
