@@ -50,7 +50,7 @@ public class KeyHandler extends KeyAdapter
     {
         int currentKey = event.getKeyCode();
 
-        if(Main.currentState == State.GAME)
+        if(Main.currentState == State.GAME && Main.loadTimeRemaining == 0)
         {
 	        for(int i = 0; i < objectHandler.objects.size(); i++) 
 	        {

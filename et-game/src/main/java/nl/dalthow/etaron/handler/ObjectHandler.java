@@ -85,8 +85,13 @@ public class ObjectHandler
 
     // Loads the requested level based on a image
     
-    public void loadLevel(BufferedImage image) 
+    public void loadLevel(BufferedImage image, boolean loadingScreen) 
     {
+    	if(loadingScreen == true)
+    	{
+    		Main.loadTimeRemaining = 300;
+    	}
+    	
         clearLevel();
 
         int imageWidth = image.getWidth();
@@ -199,7 +204,7 @@ public class ObjectHandler
 
     public void reloadLevel()
     {
-        loadLevel(currentLevel);
+        loadLevel(currentLevel, false);
     }
 
 

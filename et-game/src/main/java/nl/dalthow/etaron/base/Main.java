@@ -109,6 +109,7 @@ public class Main extends Canvas implements Runnable
     
     public static int currentLevel;
     public static int currentPage;
+    public static int loadTimeRemaining;
 
     public static float playerMovementSpeed;
     public static float playerJumpingHeight;
@@ -139,6 +140,7 @@ public class Main extends Canvas implements Runnable
         cameraObject = new Camera(0, 0);
 
         tickToMenu = 60;
+        loadTimeRemaining = 0;
 
         currentPage = 1;
 
@@ -326,6 +328,16 @@ public class Main extends Canvas implements Runnable
         
         else if(currentState == State.GAME) 
         {	
+        	if(loadTimeRemaining > 0)
+        	{
+        		loadTimeRemaining--;
+        		
+        		if(absoluteFrames == 120 && absoluteTicks == 60)
+        		{
+        			loadTimeRemaining = 0;
+        		}
+        	}
+        	
             if(!soundHandler.musicClip.isRunning()) 
             {
                 Random musicSelector = new Random();
@@ -527,6 +539,15 @@ public class Main extends Canvas implements Runnable
             
             setFontAttributes(graphics, defaultFont, new Color(255, 255, 255), 36);
             graphics.drawString("SCORE: " + levelScore, 12, windowHeight - 10);
+            
+        	if(loadTimeRemaining > 0)
+        	{
+        		 graphics.setColor(new Color(20, 20, 20));
+                 graphics.fillRect(0, 0, windowWidth, windowHeight);
+                 
+                 setFontAttributes(graphics, defaultFont, new Color(255, 255, 255), 32);
+                 graphics.drawString("Loading..." + loadTimeRemaining, windowWidth / 2 - 52, 165);
+        	}
         }
         
         graphics.dispose();
