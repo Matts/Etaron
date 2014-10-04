@@ -1,5 +1,5 @@
 /**
- * Etaron
+i * Etaron
  *
  *
  * @Author Dalthow Game Studios 
@@ -546,7 +546,13 @@ public class Main extends Canvas implements Runnable
                  graphics.fillRect(0, 0, windowWidth, windowHeight);
                  
                  setFontAttributes(graphics, defaultFont, new Color(255, 255, 255), 32);
-                 graphics.drawString("Loading..." + loadTimeRemaining, windowWidth / 2 - 52, 165);
+                 graphics.drawString("Loading...", windowWidth / 2 - 94, windowHeight / 2);
+                 
+                 graphics.setColor(Color.white);
+                 graphics.fillRect(windowHeight / 2, windowHeight / 2 + 10, 260, 20);
+                 
+                 graphics.setColor(new Color(20, 20, 20));
+                 graphics.fillRect(windowHeight / 2 + 5, windowHeight / 2 + 15, ((loadTimeRemaining / 300) * 250), 10);
         	}
         }
         

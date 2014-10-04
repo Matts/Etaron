@@ -82,7 +82,7 @@ public class MouseHandler implements MouseListener
 		                        Main.currentLevel = (i + 1);
 		                        soundHandler.musicClip.stop();
 		
-		                        handler.loadLevel(Main.easyLevelPage.get(i), true);
+		                        handler.loadLevel(Main.easyLevelPage.get(i));
 		                    }
 		                }
 
@@ -111,7 +111,7 @@ public class MouseHandler implements MouseListener
 		                        Main.currentLevel = (i + 13);
 		                        soundHandler.musicClip.stop();
 		
-		                        handler.loadLevel(Main.mediumLevelPage.get(i), true);
+		                        handler.loadLevel(Main.mediumLevelPage.get(i));
 		                    }
                 		}
                     
@@ -140,7 +140,7 @@ public class MouseHandler implements MouseListener
 		                        Main.currentLevel = (i + 25);
 		                        soundHandler.musicClip.stop();
 		
-		                        handler.loadLevel(Main.hardLevelPage.get(i), true);
+		                        handler.loadLevel(Main.hardLevelPage.get(i));
 		                    }
 		                }
                 break;
