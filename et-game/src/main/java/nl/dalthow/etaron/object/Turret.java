@@ -53,10 +53,10 @@ public class Turret extends WorldObject
         super(xPos, yPos, id);
 
         shouldFire = new boolean[4096];
+
+        Arrays.fill(shouldFire, Boolean.FALSE);
         
         tickToFire = 45;
-        
-        Arrays.fill(shouldFire, Boolean.FALSE);
         
         detectionColor = Color.red;
 
@@ -103,48 +103,47 @@ public class Turret extends WorldObject
             	}
             }
         }
+        
         for(int i = 0; i < objectList.size(); i++) 
         {
             WorldObject temporaryObject = handler.objects.get(i);
 
             if(temporaryObject.getId() == Identifier.PLAYER) 
             {
-        if(shouldFire[i] == true) 
-        {
-            if(tickToFire <= 0) 
-            {
-                switch(direction) 
-                {
-                    case -1: handler.addObject(new Projectile(xPos - 24, yPos + 8, (direction * 7.5F), Identifier.LAVA));
-                    
-                    break;
-
-                    case 1: handler.addObject(new Projectile(xPos + 52, yPos + 8, (direction * 7.5F), Identifier.LAVA));
-                        
-                    break;
-                }
-
-                soundHandler.loadSound(SoundResource.BULLET);
-                soundHandler.soundClip.start();
-                backFire = 10;
-                tickToFire = 45;
-            } 
-            
-            else 
-            {
-            	if(backFire != 0)
-            	{
-            		backFire--;
-            	}
-            	
-                tickToFire--;
+		        if(shouldFire[i] == true) 
+		        {
+		            if(tickToFire <= 0) 
+		            {
+		                switch(direction) 
+		                {
+		                    case -1: handler.addObject(new Projectile(xPos - 24, yPos + 8, (direction * 7.5F), Identifier.LAVA));
+		                    
+		                    break;
+		
+		                    case 1: handler.addObject(new Projectile(xPos + 52, yPos + 8, (direction * 7.5F), Identifier.LAVA));
+		                        
+		                    break;
+		                }
+		
+		                soundHandler.loadSound(SoundResource.BULLET);
+		                soundHandler.soundClip.start();
+		                backFire = 10;
+		                tickToFire = 45;
+		            } 
+		            
+		            else 
+		            {
+		            	if(backFire != 0)
+		            	{
+		            		backFire--;
+		            	}
+		            	
+		                tickToFire--;
+		            }  
+		        } 
             }
-
-           
-        } 
+        }
         
-        }}
-
         if(something == true)
         {
         	 detectionColor = Color.red;
