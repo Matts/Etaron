@@ -149,6 +149,7 @@ public class Turret extends WorldObject
         {
         	 detectionColor = Color.red;
         }
+        
         else 
         {
             detectionColor = Color.green;

@@ -332,7 +332,7 @@ public class Main extends Canvas implements Runnable
         	{
         		loadTimeRemaining--;
         		
-        		if(absoluteFrames == 120 && absoluteTicks == 60)
+        		if(absoluteTicks == 60)
         		{
         			loadTimeRemaining = 0;
         		}
