@@ -146,7 +146,7 @@ public class MouseHandler implements MouseListener
                 break;
             }
             
-			if(event.getX() > 50 && event.getX() < 90 && event.getY() > 325 && event.getY() < 405) 
+			if(event.getX() > 75 && event.getX() < 115 && event.getY() > 325 && event.getY() < 405) 
 			{
 				if(Main.currentPage > 0) 
 				{
