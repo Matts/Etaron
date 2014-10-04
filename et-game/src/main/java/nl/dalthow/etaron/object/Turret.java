@@ -12,6 +12,7 @@ package nl.dalthow.etaron.object;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 import nl.dalthow.etaron.framework.Identifier;
@@ -35,8 +36,6 @@ public class Turret extends WorldObject
     
     private int backFire;
  
-    private boolean shouldFire;
-
     @Autowired
     private ObjectHandler handler;
 
@@ -45,6 +44,7 @@ public class Turret extends WorldObject
     
     private Color detectionColor;
 
+    private boolean[] shouldFire;
 
     // Constructor
     
@@ -52,9 +52,12 @@ public class Turret extends WorldObject
     {
         super(xPos, yPos, id);
 
+        shouldFire = new boolean[4096];
+        
         tickToFire = 45;
-        shouldFire = false;
-
+        
+        Arrays.fill(shouldFire, Boolean.FALSE);
+        
         detectionColor = Color.red;
 
         this.direction = direction;
@@ -66,6 +69,8 @@ public class Turret extends WorldObject
     @Override
     public void tick(LinkedList<WorldObject> objectList) 
     {
+    	boolean something = false;
+    	
         for(int i = 0; i < objectList.size(); i++) 
         {
             WorldObject temporaryObject = handler.objects.get(i);
@@ -74,7 +79,7 @@ public class Turret extends WorldObject
             {
                 if(temporaryObject.getBounds().intersects(getVisionLeft()) || temporaryObject.getBounds().intersects(getVisionRight())) 
                 {
-                    shouldFire = true;
+                    shouldFire[i] = true;
 
                     if(temporaryObject.getBounds().intersects(getVisionLeft())) 
                     {
@@ -89,12 +94,22 @@ public class Turret extends WorldObject
                 
                 else 
                 {
-                    shouldFire = false;
+                    shouldFire[i] = false;
                 }
+                
+                if(shouldFire[i] == true)
+            	{
+            		something = true;
+            	}
             }
         }
+        for(int i = 0; i < objectList.size(); i++) 
+        {
+            WorldObject temporaryObject = handler.objects.get(i);
 
-        if(shouldFire == true) 
+            if(temporaryObject.getId() == Identifier.PLAYER) 
+            {
+        if(shouldFire[i] == true) 
         {
             if(tickToFire <= 0) 
             {
@@ -125,9 +140,15 @@ public class Turret extends WorldObject
                 tickToFire--;
             }
 
-            detectionColor = Color.red;
+           
         } 
         
+        }}
+
+        if(something == true)
+        {
+        	 detectionColor = Color.red;
+        }
         else 
         {
             detectionColor = Color.green;
