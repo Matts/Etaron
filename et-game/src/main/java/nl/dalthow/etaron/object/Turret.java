@@ -46,6 +46,7 @@ public class Turret extends WorldObject
 
     private boolean[] shouldFire;
 
+    
     // Constructor
     
     private Turret(float xPos, float yPos, int direction, Identifier id) 
@@ -69,7 +70,7 @@ public class Turret extends WorldObject
     @Override
     public void tick(LinkedList<WorldObject> objectList) 
     {
-    	boolean something = false;
+    	boolean detected = false;
     	
         for(int i = 0; i < objectList.size(); i++) 
         {
@@ -99,7 +100,7 @@ public class Turret extends WorldObject
                 
                 if(shouldFire[i] == true)
             	{
-            		something = true;
+            		detected = true;
             	}
             }
         }
@@ -144,7 +145,7 @@ public class Turret extends WorldObject
             }
         }
         
-        if(something == true)
+        if(detected == true)
         {
         	 detectionColor = Color.red;
         }
