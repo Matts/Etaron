@@ -87,7 +87,7 @@ public class ObjectHandler
     
     public void loadLevel(BufferedImage image) 
     {
-    	Main.loadTimeRemaining = 300;
+    	Main.loadTimeRemaining = 250;
     	
         clearLevel();
 

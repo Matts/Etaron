@@ -328,6 +328,8 @@ public class Main extends Canvas implements Runnable
         
         else if(currentState == State.GAME) 
         {	
+        	System.out.println(loadTimeRemaining);
+        	
         	if(loadTimeRemaining > 0)
         	{
         		loadTimeRemaining--;
@@ -552,7 +554,7 @@ public class Main extends Canvas implements Runnable
                  graphics.fillRect(windowHeight / 2, windowHeight / 2 + 10, 260, 20);
                  
                  graphics.setColor(new Color(20, 20, 20));
-                 graphics.fillRect(windowHeight / 2 + 5, windowHeight / 2 + 15, ((loadTimeRemaining / 300) * 250), 10);
+                 graphics.fillRect(windowHeight / 2 + 5, windowHeight / 2 + 15, 250 - loadTimeRemaining, 10);
         	}
         }
         
