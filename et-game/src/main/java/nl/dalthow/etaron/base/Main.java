@@ -404,14 +404,7 @@ public class Main extends Canvas implements Runnable
 
             switch(currentPage) 
             {
-	            case 0: setFontAttributes(graphics, defaultFont, new Color(0, 255, 255), 32);
-	
-						graphics.drawString("Shop", windowWidth / 2 - 52, 165);
-						
-						graphics.setColor(new Color(255, 255, 255));
-				break;
-            
-                case 1: setFontAttributes(graphics, defaultFont, new Color(0, 255, 0), 32);
+                case 0: setFontAttributes(graphics, defaultFont, new Color(0, 255, 0), 32);
 
 						graphics.drawString("Easy", windowWidth / 2 - 52, 165);
 
@@ -438,7 +431,7 @@ public class Main extends Canvas implements Runnable
 						}
 				break;
                     
-                case 2: setFontAttributes(graphics, defaultFont, new Color(255, 255, 0), 32);
+                case 1: setFontAttributes(graphics, defaultFont, new Color(255, 255, 0), 32);
 
 						graphics.drawString("Medium", windowWidth / 2 - 80, 165);
 
@@ -465,7 +458,7 @@ public class Main extends Canvas implements Runnable
 						}
                 break;
                    
-                case 3: setFontAttributes(graphics, defaultFont, new Color(255, 0, 0), 32);
+                case 2: setFontAttributes(graphics, defaultFont, new Color(255, 0, 0), 32);
 
 						graphics.drawString("Hard", windowWidth / 2 - 52, 165);
 

@@ -59,7 +59,7 @@ public class MouseHandler implements MouseListener
         {
             switch(Main.currentPage) 
             {
-                case 1: for(int i = 0; i < Main.easyLevelPage.size(); i++) 
+                case 0: for(int i = 0; i < Main.easyLevelPage.size(); i++) 
                 		{
 		                    int yModifier = 200;
 		                    int xModifier = 200 + (150 * i);
@@ -88,7 +88,7 @@ public class MouseHandler implements MouseListener
 
                 break;
                 
-                case 2: for(int i = 0; i < Main.mediumLevelPage.size(); i++) 
+                case 1: for(int i = 0; i < Main.mediumLevelPage.size(); i++) 
                 		{
 		                    int yModifier = 200;
 		                    int xModifier = 200 + (150 * i);
@@ -117,7 +117,7 @@ public class MouseHandler implements MouseListener
                     
                 break;
 
-                case 3: for(int i = 0; i < Main.hardLevelPage.size(); i++) 
+                case 2: for(int i = 0; i < Main.hardLevelPage.size(); i++) 
                 		{
                     		int yModifier = 200;
                     		int xModifier = 200 + (150 * i);
@@ -156,7 +156,7 @@ public class MouseHandler implements MouseListener
 
 			if(event.getX() > 855 && event.getX() < 895 && event.getY() > 325 && event.getY() < 405) 
 			{
-				if(Main.currentPage < 3) 
+				if(Main.currentPage < 2) 
 				{
 					Main.currentPage++;
 				}
