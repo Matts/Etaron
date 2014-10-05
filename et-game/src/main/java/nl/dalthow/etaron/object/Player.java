@@ -319,15 +319,15 @@ public class Player extends WorldObject
 		                	
 		            		switch(Main.currentPage) 
 		                    {
-		                    	case 1: handler.loadLevel(Main.easyLevelPage.get(Main.currentLevel++));
+		                    	case 0: handler.loadLevel(Main.easyLevelPage.get(Main.currentLevel++));
 		                    	
 		                    	break;
 		                    	
-		                    	case 2: handler.loadLevel(Main.mediumLevelPage.get(Main.currentLevel++ - 13));
+		                    	case 1: handler.loadLevel(Main.mediumLevelPage.get(Main.currentLevel++ - 13));
 		                    	
 		                    	break;
 		                    	
-		                    	case 3: handler.loadLevel(Main.hardLevelPage.get(Main.currentLevel++ - 25));
+		                    	case 2: handler.loadLevel(Main.hardLevelPage.get(Main.currentLevel++ - 25));
 		
 		                    	break;
 		                    }
