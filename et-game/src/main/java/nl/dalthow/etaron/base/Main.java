@@ -555,6 +555,9 @@ public class Main extends Canvas implements Runnable
                  graphics.fillRect(windowHeight / 2, windowHeight / 2 + 10, 260, 20);
                  
                  graphics.setColor(new Color(20, 20, 20));
+                 graphics.fillRect(windowHeight / 2 + 5, windowHeight / 2 + 15, 250, 10);
+                 
+                 graphics.setColor(new Color(255, 255, 255));
                  graphics.fillRect(windowHeight / 2 + 5, windowHeight / 2 + 15, 250 - loadTimeRemaining, 10);
         	}
         }
