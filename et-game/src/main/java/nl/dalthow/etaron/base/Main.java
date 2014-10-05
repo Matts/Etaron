@@ -35,7 +35,7 @@ import nl.dalthow.etaron.handler.SoundHandler;
 import nl.dalthow.etaron.loader.FontResource;
 import nl.dalthow.etaron.loader.ImageResource;
 import nl.dalthow.etaron.loader.ResourceLoader;
-import nl.dalthow.etaron.loader.SongResource;
+import nl.dalthow.etaron.loader.MusicResource;
 import nl.dalthow.etaron.loader.SoundResource;
 import nl.dalthow.etaron.model.User;
 import nl.dalthow.etaron.window.Base;
@@ -195,7 +195,7 @@ public class Main extends Canvas implements Runnable
 
     private void loadMusic() 
     {
-        soundHandler.loadSong(SongResource.ANTS);
+        soundHandler.loadSong(MusicResource.ANTS);
         soundHandler.loadSound(SoundResource.PICKUP);
 
         soundHandler.changeVolume(musicVolume, soundHandler.musicClip);
@@ -315,8 +315,6 @@ public class Main extends Canvas implements Runnable
         {
             if(tickToMenu <= 0) 
             {
-                soundHandler.musicClip.start();
-
                 currentState = State.MENU;
             } 
             
@@ -342,7 +340,7 @@ public class Main extends Canvas implements Runnable
             {
                 Random musicSelector = new Random();
 
-                soundHandler.loadSong(SongResource.values()[musicSelector.nextInt(SongResource.values().length)]);
+                soundHandler.loadSong(MusicResource.values()[musicSelector.nextInt(MusicResource.values().length)]);
 
                 soundHandler.musicClip.start();
             }

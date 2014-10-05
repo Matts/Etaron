@@ -11,7 +11,7 @@ package nl.dalthow.etaron.handler;
 
 import nl.dalthow.etaron.base.Main;
 import nl.dalthow.etaron.loader.ResourceLoader;
-import nl.dalthow.etaron.loader.SongResource;
+import nl.dalthow.etaron.loader.MusicResource;
 import nl.dalthow.etaron.loader.SoundResource;
 
 import org.slf4j.Logger;
@@ -39,7 +39,7 @@ public class SoundHandler
 
     // Can be called from anywhere to load a music clip
     
-    public void loadSong(SongResource music) 
+    public void loadSong(MusicResource music) 
     {
         try 
         {

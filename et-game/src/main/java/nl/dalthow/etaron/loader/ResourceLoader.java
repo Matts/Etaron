@@ -35,8 +35,8 @@ public class ResourceLoader
 
     private Map<ImageResource, Resource> images = new HashMap<>(ImageResource.values().length);
     private Map<FontResource, Resource> fonts = new HashMap<>(FontResource.values().length);
-    private Map<SoundResource, Resource> sounds = new HashMap<>(SongResource.values().length);
-    private Map<SongResource, Resource> songs = new HashMap<>(SongResource.values().length);
+    private Map<SoundResource, Resource> sounds = new HashMap<>(MusicResource.values().length);
+    private Map<MusicResource, Resource> songs = new HashMap<>(MusicResource.values().length);
 
     
     // Loads the actual files 
@@ -59,7 +59,7 @@ public class ResourceLoader
             sounds.put(sound, applicationContext.getResource(sound.getPath()));
         }
         
-        for(SongResource song : SongResource.values()) 
+        for(MusicResource song : MusicResource.values()) 
         {
             songs.put(song, applicationContext.getResource(song.getPath()));
         }
@@ -78,7 +78,7 @@ public class ResourceLoader
         return Font.createFont(Font.TRUETYPE_FONT, fonts.get(font).getInputStream());
     }
 
-    public InputStream get(SongResource music) throws IOException 
+    public InputStream get(MusicResource music) throws IOException 
     {
         return songs.get(music).getInputStream();
     }
