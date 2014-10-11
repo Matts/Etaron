@@ -140,7 +140,7 @@ public class Player extends WorldObject
         {
             WorldObject temporaryObject = handler.objects.get(i);
            
-        	if(temporaryObject.getId() == Identifier.BLOCK || temporaryObject.getId() == Identifier.TURRET) 
+        	if(temporaryObject.getId() == Identifier.BLOCK || temporaryObject.getId() == Identifier.TURRET || temporaryObject.getId() == Identifier.PLATFORM) 
             {
                 if(getBoundsTop().intersects(temporaryObject.getBounds())) 
                 {

@@ -17,6 +17,7 @@ public enum Identifier
 	BLOCK(),
 	TURRET(),
 	BULLET(),
+	PLATFORM(),
 	TRAMPOLINE(),
 	LAVA(),
 	COIN(), 

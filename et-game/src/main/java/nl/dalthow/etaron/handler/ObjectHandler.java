@@ -63,7 +63,7 @@ public class ObjectHandler
             	temporaryPlayer.tick(objects);
             }
             
-            else if(temporaryObject.getId() == Identifier.BLOCK || temporaryObject.getId() == Identifier.LAVA)
+            else if(temporaryObject.getId() == Identifier.BLOCK || temporaryObject.getId() == Identifier.LAVA || temporaryObject.getId() == Identifier.DECOR)
             {
             	if(temporaryPlayer != null && temporaryPlayer.getUpdateBounds().intersects(temporaryObject.getBounds()))
             	{
@@ -155,12 +155,12 @@ public class ObjectHandler
 
                 else if(red == 0 && green == 255 && blue == 255)
                 {
-                    addObject(new Block((i * 32), (j * 32), 3, 1, 8, Identifier.BLOCK));
+                    addObject(new Block((i * 32), (j * 32), 3, 1, 8, Identifier.PLATFORM));
                 }
                 
                 else if(red == 255 && green == 0 && blue == 255) 
                 {
-                    addObject(new Block((i * 32), (j * 32), 4, 0, 8, Identifier.BLOCK));
+                    addObject(new Block((i * 32), (j * 32), 4, 0, 8, Identifier.PLATFORM));
                 }
 
                 else if(red == 255 && green == 175 && blue == 175)
