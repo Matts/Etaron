@@ -117,11 +117,11 @@ public class Turret extends WorldObject
 		            {
 		                switch(direction) 
 		                {
-		                    case -1: handler.addObject(new Projectile(xPos - 24, yPos + 8, (direction * 7.5F), Identifier.LAVA));
+		                    case -1: handler.addObject(new Projectile(xPos - 24, yPos + 8, (direction * 7.5F), Identifier.BULLET));
 		                    
 		                    break;
 		
-		                    case 1: handler.addObject(new Projectile(xPos + 52, yPos + 8, (direction * 7.5F), Identifier.LAVA));
+		                    case 1: handler.addObject(new Projectile(xPos + 52, yPos + 8, (direction * 7.5F), Identifier.BULLET));
 		                        
 		                    break;
 		                }

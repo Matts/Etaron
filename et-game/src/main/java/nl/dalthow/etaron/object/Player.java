@@ -139,206 +139,204 @@ public class Player extends WorldObject
         for(int i = 0; i < objectList.size(); i++)
         {
             WorldObject temporaryObject = handler.objects.get(i);
+           
+        	if(temporaryObject.getId() == Identifier.BLOCK || temporaryObject.getId() == Identifier.TURRET) 
+            {
+                if(getBoundsTop().intersects(temporaryObject.getBounds())) 
+                {
+                	yPos = temporaryObject.getPosY() + (playerHeight / 2);
+                    yVel = 0;
+                }
 
-            if(temporaryObject.getBounds().intersects(getUpdateBounds()))
-            {            	
-	            if(temporaryObject.getId() == Identifier.BLOCK) 
-	            {
-	                if(getBoundsTop().intersects(temporaryObject.getBounds())) 
-	                {
-	                	yPos = temporaryObject.getPosY() + (playerHeight / 2);
-	                    yVel = 0;
-	                }
-	
-	                if(getBoundsBottom().intersects(temporaryObject.getBounds())) 
-	                {
-	                    yPos = temporaryObject.getPosY() - playerHeight;
-	                    yVel = 0;
-	
-	                    isJumping = false;
-	                    isFalling = false;
-	                }
-	
-	                if(getBoundsRight().intersects(temporaryObject.getBounds()))
-	                {
-	                    xPos = temporaryObject.getPosX() - playerWidth;
-	                }
-	
-	                if(getBoundsLeft().intersects(temporaryObject.getBounds())) 
-	                {
-	                    xPos = temporaryObject.getPosX() + playerWidth;
-	                }
-	            } 
-	            
-	            else if(temporaryObject.getId() == Identifier.LAVA)
-	            {
-	                if(getBounds().intersects(temporaryObject.getBounds())) 
-	                {
-	                	soundHandler.loadSound(SoundResource.FAILURE);
-	                    soundHandler.soundClip.start();
-	                	handler.reloadLevel();
-	
-	                    return;
-	                }
-	            }
-	            
-	            else if(temporaryObject.getId() == Identifier.KEY)
-	            {
-	                if(getBounds().intersects(temporaryObject.getBounds()) && hasKey == false) 
-	                {
-	                	hasKey = true;
-	                	
-	                	soundHandler.loadSound(SoundResource.KEY);
-	                    soundHandler.soundClip.start();
-	
-	                	handler.removeObject(temporaryObject);
-	                }
-	            }
-	            
-	            else if(temporaryObject.getId() == Identifier.COIN)
-	            {
-	                if(getBounds().intersects(temporaryObject.getBounds())) 
-	                {
-	                    Main.levelScore += 25;
-	
-	                    soundHandler.loadSound(SoundResource.PICKUP);
-	                    soundHandler.soundClip.start();
-	
-	                    handler.removeObject(temporaryObject);
-	                }
-	            } 
-	            
-	            else if(temporaryObject.getId() == Identifier.TRAMPOLINE)
-	            {
-	                if(getBoundsBottom().intersects(temporaryObject.getBounds())) 
-	                {
-	                	yVel = -27.53F;
-	                }
-	                
-	                else if(getBoundsTop().intersects(temporaryObject.getBounds())) 
-	                {
-	                	yVel = 27.53F;
-	                }
-	                
-	                else if(getBoundsRight().intersects(temporaryObject.getBounds()))
-	                {
-	                    xPos = temporaryObject.getPosX() - playerWidth;
-	                }
-	
-	                else if(getBoundsLeft().intersects(temporaryObject.getBounds())) 
-	                {
-	                    xPos = temporaryObject.getPosX() + playerWidth;
-	                }
-	                
-	                if(getBounds().intersects(temporaryObject.getBounds()))
-	                {
-	                    soundHandler.loadSound(SoundResource.BOING);
-	                    soundHandler.soundClip.start();
-	                }
-	            } 
-	            
-	            else if(temporaryObject.getId() == Identifier.DOOR)
-	            {
-	            	if(getBoundsTop().intersects(temporaryObject.getBounds())) 
-	                {
-	                	yPos = temporaryObject.getPosY() + (playerHeight / 2);
-	                    yVel = 0;
-	                    
-	                    if(hasKey)
-	                    {
-	                    	handler.removeObject(temporaryObject);
-	                    	hasKey = false;
-	                    	
-	                    	soundHandler.loadSound(SoundResource.DOOR);
-							soundHandler.soundClip.start();
-	                    }
-	                }
-	
-	                if(getBoundsBottom().intersects(temporaryObject.getBounds())) 
-	                {
-	                    yPos = temporaryObject.getPosY() - playerHeight;
-	                    yVel = 0;
-	
-	                    isJumping = false;
-	                    isFalling = false;
-	                    
-	                    if(hasKey)
-	                    {
-	                    	handler.removeObject(temporaryObject);
-	                    	hasKey = false;
-	                    	
-	                    	soundHandler.loadSound(SoundResource.DOOR);
-							soundHandler.soundClip.start();
-	                    }
-	                }
-	
-	                if(getBoundsRight().intersects(temporaryObject.getBounds()))
-	                {
-	                    xPos = temporaryObject.getPosX() - playerWidth;
-	                    
-	                    if(hasKey)
-	                    {
-	                    	handler.removeObject(temporaryObject);
-	                    	hasKey = false;
-	                    	
-	                    	soundHandler.loadSound(SoundResource.DOOR);
-							soundHandler.soundClip.start();
-	                    }
-	                }
-	
-	                if(getBoundsLeft().intersects(temporaryObject.getBounds())) 
-	                {
-	                    xPos = temporaryObject.getPosX() + playerWidth;
-	                    
-	                    if(hasKey)
-	                    {
-	                    	handler.removeObject(temporaryObject);
-	                    	hasKey = false;
-	                    	
-	                    	soundHandler.loadSound(SoundResource.DOOR);
-							soundHandler.soundClip.start();
-	                    }
-	                }
-	            } 
-	                        
-	            else if(temporaryObject.getId() == Identifier.FLAG) 
-	            {
-	                if(getBounds().intersects(temporaryObject.getBounds()))
-	                {
-						soundHandler.loadSound(SoundResource.VICTORY);
+                if(getBoundsBottom().intersects(temporaryObject.getBounds())) 
+                {
+                    yPos = temporaryObject.getPosY() - playerHeight;
+                    yVel = 0;
+
+                    isJumping = false;
+                    isFalling = false;
+                }
+
+                if(getBoundsRight().intersects(temporaryObject.getBounds()))
+                {
+                    xPos = temporaryObject.getPosX() - playerWidth;
+                }
+
+                if(getBoundsLeft().intersects(temporaryObject.getBounds())) 
+                {
+                    xPos = temporaryObject.getPosX() + playerWidth;
+                }
+            } 
+            
+            else if(temporaryObject.getId() == Identifier.LAVA || temporaryObject.getId() == Identifier.BULLET)
+            {
+                if(getBounds().intersects(temporaryObject.getBounds())) 
+                {
+                	soundHandler.loadSound(SoundResource.FAILURE);
+                    soundHandler.soundClip.start();
+                
+                    handler.reloadLevel();
+
+                    return;
+                }
+            }
+            
+            else if(temporaryObject.getId() == Identifier.KEY)
+            {
+                if(getBounds().intersects(temporaryObject.getBounds()) && hasKey == false) 
+                {
+                	hasKey = true;
+                	
+                	soundHandler.loadSound(SoundResource.KEY);
+                    soundHandler.soundClip.start();
+
+                	handler.removeObject(temporaryObject);
+                }
+            }
+            
+            else if(temporaryObject.getId() == Identifier.COIN)
+            {
+                if(getBounds().intersects(temporaryObject.getBounds())) 
+                {
+                    Main.levelScore += 25;
+
+                    soundHandler.loadSound(SoundResource.PICKUP);
+                    soundHandler.soundClip.start();
+
+                    handler.removeObject(temporaryObject);
+                }
+            } 
+            
+            else if(temporaryObject.getId() == Identifier.TRAMPOLINE)
+            {
+                if(getBoundsBottom().intersects(temporaryObject.getBounds())) 
+                {
+                	yVel = -27.53F;
+                }
+                
+                else if(getBoundsTop().intersects(temporaryObject.getBounds())) 
+                {
+                	yVel = 27.53F;
+                }
+                
+                else if(getBoundsRight().intersects(temporaryObject.getBounds()))
+                {
+                    xPos = temporaryObject.getPosX() - playerWidth;
+                }
+
+                else if(getBoundsLeft().intersects(temporaryObject.getBounds())) 
+                {
+                    xPos = temporaryObject.getPosX() + playerWidth;
+                }
+                
+                if(getBounds().intersects(temporaryObject.getBounds()))
+                {
+                    soundHandler.loadSound(SoundResource.BOING);
+                    soundHandler.soundClip.start();
+                }
+            } 
+            
+            else if(temporaryObject.getId() == Identifier.DOOR)
+            {
+            	if(getBoundsTop().intersects(temporaryObject.getBounds())) 
+                {
+                	yPos = temporaryObject.getPosY() + (playerHeight / 2);
+                    yVel = 0;
+                    
+                    if(hasKey)
+                    {
+                    	handler.removeObject(temporaryObject);
+                    	hasKey = false;
+                    	
+                    	soundHandler.loadSound(SoundResource.DOOR);
 						soundHandler.soundClip.start();
-	                    
-	                	if(Main.user != null) 
-	                    {
-	                        saveScore();
-	                    }
-	
-	                	try
-	                	{
-		                    handler.clearLevel();
-		                	
-		            		switch(Main.currentPage) 
-		                    {
-		                    	case 0: handler.loadLevel(Main.easyLevelPage.get(Main.currentLevel++));
-		                    	
-		                    	break;
-		                    	
-		                    	case 1: handler.loadLevel(Main.mediumLevelPage.get(Main.currentLevel++ - 13));
-		                    	
-		                    	break;
-		                    	
-		                    	case 2: handler.loadLevel(Main.hardLevelPage.get(Main.currentLevel++ - 25));
-		
-		                    	break;
-		                    }
-	                	}
+                    }
+                }
+
+                if(getBoundsBottom().intersects(temporaryObject.getBounds())) 
+                {
+                    yPos = temporaryObject.getPosY() - playerHeight;
+                    yVel = 0;
+
+                    isJumping = false;
+                    isFalling = false;
+                    
+                    if(hasKey)
+                    {
+                    	handler.removeObject(temporaryObject);
+                    	hasKey = false;
+                    	
+                    	soundHandler.loadSound(SoundResource.DOOR);
+						soundHandler.soundClip.start();
+                    }
+                }
+
+                if(getBoundsRight().intersects(temporaryObject.getBounds()))
+                {
+                    xPos = temporaryObject.getPosX() - playerWidth;
+                    
+                    if(hasKey)
+                    {
+                    	handler.removeObject(temporaryObject);
+                    	hasKey = false;
+                    	
+                    	soundHandler.loadSound(SoundResource.DOOR);
+						soundHandler.soundClip.start();
+                    }
+                }
+
+                if(getBoundsLeft().intersects(temporaryObject.getBounds())) 
+                {
+                    xPos = temporaryObject.getPosX() + playerWidth;
+                    
+                    if(hasKey)
+                    {
+                    	handler.removeObject(temporaryObject);
+                    	hasKey = false;
+                    	
+                    	soundHandler.loadSound(SoundResource.DOOR);
+						soundHandler.soundClip.start();
+                    }
+                }
+            } 
+                        
+            else if(temporaryObject.getId() == Identifier.FLAG) 
+            {
+                if(getBounds().intersects(temporaryObject.getBounds()))
+                {
+					soundHandler.loadSound(SoundResource.VICTORY);
+					soundHandler.soundClip.start();
+                    
+                	if(Main.user != null) 
+                    {
+                        saveScore();
+                    }
+
+                	try
+                	{
+	                    handler.clearLevel();
 	                	
-	                	catch(Exception error)
-	                	{
-	                		logger.error(error.getMessage(), error);
-	                	}
-	                }
-	            }
+	            		switch(Main.currentPage) 
+	                    {
+	                    	case 0: handler.loadLevel(Main.easyLevelPage.get(Main.currentLevel++));
+	                    	
+	                    	break;
+	                    	
+	                    	case 1: handler.loadLevel(Main.mediumLevelPage.get(Main.currentLevel++ - 13));
+	                    	
+	                    	break;
+	                    	
+	                    	case 2: handler.loadLevel(Main.hardLevelPage.get(Main.currentLevel++ - 25));
+	
+	                    	break;
+	                    }
+                	}
+                	
+                	catch(Exception error)
+                	{
+                		logger.error(error.getMessage(), error);
+                	}
+                }
             }
         }
     }

@@ -19,6 +19,7 @@ import nl.dalthow.etaron.framework.State;
 import nl.dalthow.etaron.framework.WorldObject;
 import nl.dalthow.etaron.object.Block;
 import nl.dalthow.etaron.object.Item;
+import nl.dalthow.etaron.object.Player;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -32,13 +33,14 @@ public class ObjectHandler
     private BufferedImage currentLevel;
     
     private WorldObject temporaryObject;
+    private Player temporaryPlayer;
   
     @Autowired
     private ApplicationContext applicationContext;
 
     public LinkedList<WorldObject> objects = new LinkedList<>();
- 
-       
+    
+           
     // Constructor
     
     private ObjectHandler() 
@@ -54,7 +56,25 @@ public class ObjectHandler
         for(int i = 0; i < objects.size(); i++) 
         {
             temporaryObject = objects.get(i);
-            temporaryObject.tick(objects);
+            
+            if(temporaryObject.getId() == Identifier.PLAYER)
+            {
+            	temporaryPlayer = (Player)temporaryObject;
+            	temporaryPlayer.tick(objects);
+            }
+            
+            else if(temporaryObject.getId() == Identifier.BLOCK || temporaryObject.getId() == Identifier.LAVA)
+            {
+            	if(temporaryPlayer != null && temporaryPlayer.getUpdateBounds().intersects(temporaryObject.getBounds()))
+            	{
+            		temporaryObject.tick(objects);
+            	}
+            }
+            
+            else
+            {
+                temporaryObject.tick(objects);
+            }
         }
     }
 
@@ -170,7 +190,7 @@ public class ObjectHandler
                 
                 else if(red == 255 && green == 200 && blue == 0) 
                 {
-                    addObject((WorldObject)applicationContext.getBean("turret", (i * 32), (j * 32 - 8), 0, Identifier.BLOCK));
+                    addObject((WorldObject)applicationContext.getBean("turret", (i * 32), (j * 32 - 8), 0, Identifier.TURRET));
                 }
 
                 else if(red == 0 && green == 0 && blue == 255) 

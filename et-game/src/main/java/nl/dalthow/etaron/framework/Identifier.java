@@ -15,6 +15,8 @@ public enum Identifier
 	
 	PLAYER(),
 	BLOCK(),
+	TURRET(),
+	BULLET(),
 	TRAMPOLINE(),
 	LAVA(),
 	COIN(), 
