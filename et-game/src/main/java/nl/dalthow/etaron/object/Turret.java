@@ -49,9 +49,9 @@ public class Turret extends WorldObject
     
     // Constructor
     
-    private Turret(float xPos, float yPos, int direction, Identifier id) 
+    private Turret(float xPos, float yPos, int direction, Identifier id, boolean isSolid) 
     {
-        super(xPos, yPos, id);
+        super(xPos, yPos, id, isSolid);
 
         shouldFire = new boolean[4096];
 
@@ -117,11 +117,11 @@ public class Turret extends WorldObject
 		            {
 		                switch(direction) 
 		                {
-		                    case -1: handler.addObject(new Projectile(xPos - 24, yPos + 8, (direction * 7.5F), Identifier.BULLET));
+		                    case -1: handler.addObject(new Projectile(xPos - 24, yPos + 8, (direction * 7.5F), Identifier.BULLET, false));
 		                    
 		                    break;
 		
-		                    case 1: handler.addObject(new Projectile(xPos + 52, yPos + 8, (direction * 7.5F), Identifier.BULLET));
+		                    case 1: handler.addObject(new Projectile(xPos + 52, yPos + 8, (direction * 7.5F), Identifier.BULLET, false));
 		                        
 		                    break;
 		                }

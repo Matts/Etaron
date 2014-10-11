@@ -27,10 +27,12 @@ public abstract class WorldObject
 	
 	protected Identifier id;
 	
+	protected boolean isSolid;
+	
 	
 	// Constructor
 	
-	public WorldObject(float xPos, float yPos, Identifier id)
+	public WorldObject(float xPos, float yPos, Identifier id, boolean isSolid)
 	{
 		this.xPos = xPos;
 		this.yPos = yPos;
@@ -41,6 +43,8 @@ public abstract class WorldObject
 		this.facing = 0;
 		
 		this.id = id;
+		
+		this.isSolid = isSolid;
 	}
 	
 	
@@ -97,6 +101,11 @@ public abstract class WorldObject
 		return facing;
 	}
 	
+	public boolean getSolid()
+	{
+		return isSolid;
+	}
+	
 	
 	// Setters
 	
@@ -133,5 +142,10 @@ public abstract class WorldObject
 	public void setFacing(int facing)
 	{
 		this.facing = facing;
+	}
+	
+	public void setSolid(boolean isSolid)
+	{
+		this.isSolid = isSolid;
 	}
 }

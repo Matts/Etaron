@@ -60,9 +60,9 @@ public class Player extends WorldObject
     
     // Constructor
     
-    private Player(float xPos, float yPos, Identifier id) 
+    private Player(float xPos, float yPos, Identifier id, boolean isSolid) 
     {
-        super(xPos, yPos, id);
+        super(xPos, yPos, id, isSolid);
 
         playerWidth = 32F;
         playerHeight = 64F;
@@ -140,7 +140,7 @@ public class Player extends WorldObject
         {
             WorldObject temporaryObject = handler.objects.get(i);
            
-        	if(temporaryObject.getId() == Identifier.BLOCK || temporaryObject.getId() == Identifier.TURRET || temporaryObject.getId() == Identifier.PLATFORM) 
+        	if(temporaryObject.getSolid() == true) 
             {
                 if(getBoundsTop().intersects(temporaryObject.getBounds())) 
                 {

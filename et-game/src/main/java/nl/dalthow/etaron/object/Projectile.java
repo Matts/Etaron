@@ -28,9 +28,9 @@ public class Projectile extends WorldObject
 	
 	// Constructor
 	
-	public Projectile(float xPos, float yPos, float speed, Identifier id) 
+	public Projectile(float xPos, float yPos, float speed, Identifier id, boolean isSolid) 
 	{
-		super(xPos, yPos, id);
+		super(xPos, yPos, id, isSolid);
 		
 		timeInWorld = 0;
 		

@@ -128,7 +128,7 @@ public class ObjectHandler
 
 		        if(red == 100 && green == 100 && blue == 100)
 		        {
-		            addObject(new Block((i * 32), (j * 32), 5, 0, 0, Identifier.DECOR));
+		            addObject(new Block((i * 32), (j * 32), 5, 0, 0, Identifier.DECOR, false));
 		        }
             }
         }
@@ -145,57 +145,57 @@ public class ObjectHandler
 
                 if(red == 255 && green == 255 && blue == 255)
                 {
-                    addObject(new Block((i * 32), (j * 32), 0, 0, 0, Identifier.BLOCK));
+                    addObject(new Block((i * 32), (j * 32), 0, 0, 0, Identifier.BLOCK, true));
                 }
 
                 else if(red == 255 && green == 0 && blue == 0) 
                 {
-                    addObject(new Block((i * 32), (j * 32), 1, 0, 0, Identifier.LAVA));
+                    addObject(new Block((i * 32), (j * 32), 1, 0, 0, Identifier.LAVA, false));
                 }
 
                 else if(red == 0 && green == 255 && blue == 255)
                 {
-                    addObject(new Block((i * 32), (j * 32), 3, 1, 8, Identifier.PLATFORM));
+                    addObject(new Block((i * 32), (j * 32), 3, 1, 8, Identifier.PLATFORM, true));
                 }
                 
                 else if(red == 255 && green == 0 && blue == 255) 
                 {
-                    addObject(new Block((i * 32), (j * 32), 4, 0, 8, Identifier.PLATFORM));
+                    addObject(new Block((i * 32), (j * 32), 4, 0, 8, Identifier.PLATFORM, true));
                 }
 
                 else if(red == 255 && green == 175 && blue == 175)
                 {
-                    addObject(new Block((i * 32), (j * 32), 6, 0, 0, Identifier.TRAMPOLINE));
+                    addObject(new Block((i * 32), (j * 32), 6, 0, 0, Identifier.TRAMPOLINE, false));
                 }
                 
                 else if(red == 155 && green == 75 && blue == 0) 
                 {
-                	addObject(new Block((i * 32), (j * 32), 7, 0, 0, Identifier.DOOR));
+                	addObject(new Block((i * 32), (j * 32), 7, 0, 0, Identifier.DOOR, false));
                 }
 
                 else if(red == 255 && green == 255 && blue == 0)
                 {
-                    addObject(new Item((i * 32), (j * 32), 0, Identifier.COIN));
+                    addObject(new Item((i * 32), (j * 32), 0, Identifier.COIN, false));
                 }
                 
                 else if(red == 175 && green == 175 && blue == 175)
                 {
-                    addObject(new Item((i * 32), (j * 32), 0, Identifier.KEY));
+                    addObject(new Item((i * 32), (j * 32), 0, Identifier.KEY, false));
                 }
 
                 else if(red == 0 && green == 255 && blue == 0) 
                 {
-                	addObject(new Block((i * 32), (j * 32), 2, 0, 0, Identifier.FLAG));
+                	addObject(new Block((i * 32), (j * 32), 2, 0, 0, Identifier.FLAG, false));
                 }
                 
                 else if(red == 255 && green == 200 && blue == 0) 
                 {
-                    addObject((WorldObject)applicationContext.getBean("turret", (i * 32), (j * 32 - 8), 0, Identifier.TURRET));
+                    addObject((WorldObject)applicationContext.getBean("turret", (i * 32), (j * 32 - 8), 0, Identifier.TURRET, true));
                 }
 
                 else if(red == 0 && green == 0 && blue == 255) 
                 {
-                    addObject((WorldObject)applicationContext.getBean("player", (i * 32), (j * 32), Identifier.PLAYER));
+                    addObject((WorldObject)applicationContext.getBean("player", (i * 32), (j * 32), Identifier.PLAYER, false));
                 }
             }
         }           

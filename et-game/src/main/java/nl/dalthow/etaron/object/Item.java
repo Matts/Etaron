@@ -29,9 +29,9 @@ public class Item extends WorldObject
 	
 	// Constructor
 	
-	public Item(float xPos, float yPos, int type, Identifier id) 
+	public Item(float xPos, float yPos, int type, Identifier id, boolean isSolid) 
 	{
-		super(xPos, yPos, id);
+		super(xPos, yPos, id, isSolid);
 		
 		this.type = type;
 		this.hasTurned = false;

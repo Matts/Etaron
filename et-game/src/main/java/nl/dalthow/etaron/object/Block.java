@@ -31,9 +31,9 @@ public class Block extends WorldObject
 	
 	// Constructor
 	
-	public Block(float xPos, float yPos, int type, int direction, int amount, Identifier id) 
+	public Block(float xPos, float yPos, int type, int direction, int amount, Identifier id, boolean isSolid) 
 	{
-		super(xPos, yPos, id);
+		super(xPos, yPos, id, isSolid);
 		
 		this.type = type;
 		this.direction = direction;
