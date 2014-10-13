@@ -142,7 +142,7 @@ public class Main extends Canvas implements Runnable
         tickToMenu = 60;
         loadTimeRemaining = 0;
 
-        currentPage = 1;
+        currentPage = 0;
 
         displayInfo = false;
 

@@ -23,7 +23,7 @@ public class ScoreRowMapper implements RowMapper<Score>
     public Score mapRow(ResultSet rs, int rowNum) throws SQLException 
     {
         Score score = new Score();
-        score.setValue(rs.getLong("value"));
+        score.setValue(rs.getLong("score"));
         score.setLevel(rs.getInt("level"));
         
         return score;
