@@ -33,13 +33,14 @@ public class ObjectHandler
     private BufferedImage currentLevel;
     
     private WorldObject temporaryObject;
-    private Player temporaryPlayer;
-  
+    private Player firstPlayer;
+    private Player secondPlayer;
+    
     @Autowired
     private ApplicationContext applicationContext;
 
     public LinkedList<WorldObject> objects = new LinkedList<>();
-    
+   
            
     // Constructor
     
@@ -56,25 +57,26 @@ public class ObjectHandler
         for(int i = 0; i < objects.size(); i++) 
         {
             temporaryObject = objects.get(i);
-            
+                       
             if(temporaryObject.getId() == Identifier.PLAYER)
             {
-            	temporaryPlayer = (Player)temporaryObject;
-            	temporaryPlayer.tick(objects);
-            }
-            
-            else if(temporaryObject.getId() == Identifier.BLOCK || temporaryObject.getId() == Identifier.LAVA || temporaryObject.getId() == Identifier.DECOR)
-            {
-            	if(temporaryPlayer != null && temporaryPlayer.getUpdateBounds().intersects(temporaryObject.getBounds()))
-            	{
-            		temporaryObject.tick(objects);
-            	}
+            	if(firstPlayer == null)
+                {
+                	firstPlayer = (Player) temporaryObject;
+                }
+                
+                else if(secondPlayer == null)
+                {
+                	secondPlayer = (Player) temporaryObject;
+                }
             }
             
             else
             {
-                temporaryObject.tick(objects);
+            	
             }
+
+            temporaryObject.tick(objects);
         }
     }
 
@@ -83,9 +85,29 @@ public class ObjectHandler
     
     public void render(Graphics graphicsObject) 
     {
-        for(WorldObject object : objects) 
+    	for(int i = 0; i < objects.size(); i++) 
         {
-            object.render(graphicsObject);
+            temporaryObject = objects.get(i);
+               
+        	if(firstPlayer != null)
+        	{
+        		firstPlayer.render(graphicsObject);
+        	}
+        	
+        	if(secondPlayer != null)
+        	{
+        		secondPlayer.render(graphicsObject);
+        	}	
+        	
+        	if(firstPlayer != null && firstPlayer.getRenderBounds().intersects(temporaryObject.getBounds()))
+        	{
+        		temporaryObject.render(graphicsObject);
+        	}
+        	
+        	else if(secondPlayer != null && secondPlayer.getRenderBounds().intersects(temporaryObject.getBounds()))
+        	{
+        		temporaryObject.render(graphicsObject);
+        	}
         }
     }
 
@@ -95,6 +117,9 @@ public class ObjectHandler
     public void clearLevel() 
     {
         objects.clear();
+        
+        firstPlayer = null;
+        secondPlayer = null;
         
         Main.cameraObject.setPosX(0); 
         Main.cameraObject.setPosY(0);

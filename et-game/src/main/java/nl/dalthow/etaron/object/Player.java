@@ -407,4 +407,9 @@ public class Player extends WorldObject
     {
         return new Rectangle((int)xPos - 64, (int)yPos - 64, (int)playerWidth + 128, (int)playerHeight + 128);
     }
+    
+    public Rectangle getRenderBounds() 
+    {
+        return new Rectangle((int)xPos - 256, (int)yPos - 256, (int)playerWidth + 512, (int)playerHeight + 512);
+    }
 }
