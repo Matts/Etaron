@@ -71,7 +71,7 @@ public class ObjectHandler
                 }
             }
             
-            if(temporaryObject.getId() == Identifier.COIN || temporaryObject.getId() == Identifier.TURRET || temporaryObject.getId() == Identifier.PLATFORM)
+            if(temporaryObject.getId() == Identifier.COIN || temporaryObject.getId() == Identifier.TURRET || temporaryObject.getId() == Identifier.PLATFORM || temporaryObject.getId() == Identifier.BULLET)
             {
             	temporaryObject.tick(objects);
             }
