@@ -71,12 +71,23 @@ public class ObjectHandler
                 }
             }
             
+            if(temporaryObject.getId() == Identifier.COIN || temporaryObject.getId() == Identifier.TURRET || temporaryObject.getId() == Identifier.PLATFORM)
+            {
+            	temporaryObject.tick(objects);
+            }
+            
             else
             {
+            	if(firstPlayer != null && firstPlayer.getUpdateBounds().intersects(temporaryObject.getBounds()))
+            	{
+            		temporaryObject.tick(objects);
+            	}
             	
+            	else if(secondPlayer != null && secondPlayer.getUpdateBounds().intersects(temporaryObject.getBounds()))
+            	{
+            		temporaryObject.tick(objects);
+            	}
             }
-
-            temporaryObject.tick(objects);
         }
     }
 
