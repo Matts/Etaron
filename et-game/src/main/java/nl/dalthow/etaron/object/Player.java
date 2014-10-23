@@ -405,11 +405,11 @@ public class Player extends WorldObject
     
     public Rectangle getUpdateBounds() 
     {
-        return new Rectangle((int)xPos - 64, (int)yPos - 64, (int)playerWidth + 128, (int)playerHeight + 128);
+        return new Rectangle((int)xPos - 32, (int)yPos - 32, (int)playerWidth + 64, (int)playerHeight + 64);
     }
     
     public Rectangle getRenderBounds() 
     {
-        return new Rectangle((int)xPos - 256, (int)yPos - 256, (int)playerWidth + 512, (int)playerHeight + 512);
+        return new Rectangle((int)xPos - (Main.windowWidth / 2), (int)yPos - (Main.windowHeight / 2), (int)playerWidth + Main.windowWidth, (int)playerHeight + Main.windowHeight - 48);
     }
 }
