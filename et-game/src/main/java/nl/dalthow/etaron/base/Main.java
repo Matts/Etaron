@@ -1,5 +1,5 @@
 /**
-i * Etaron
+ * Etaron
  *
  *
  * @Author Dalthow Game Studios 

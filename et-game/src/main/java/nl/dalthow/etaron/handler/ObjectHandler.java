@@ -33,6 +33,7 @@ public class ObjectHandler
     private BufferedImage currentLevel;
     
     private WorldObject temporaryObject;
+    
     private Player firstPlayer;
     private Player secondPlayer;
     
