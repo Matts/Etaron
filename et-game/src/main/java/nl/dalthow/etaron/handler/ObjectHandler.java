@@ -100,24 +100,16 @@ public class ObjectHandler
     	for(int i = 0; i < objects.size(); i++) 
         {
             temporaryObject = objects.get(i);
-               
-        	if(firstPlayer != null)
-        	{
-        		firstPlayer.render(graphicsObject);
-        	}
-        	
-        	if(secondPlayer != null)
-        	{
-        		secondPlayer.render(graphicsObject);
-        	}	
-        	
+              
         	if(firstPlayer != null && firstPlayer.getRenderBounds().intersects(temporaryObject.getBounds()))
         	{
+        		firstPlayer.render(graphicsObject);
         		temporaryObject.render(graphicsObject);
         	}
         	
         	else if(secondPlayer != null && secondPlayer.getRenderBounds().intersects(temporaryObject.getBounds()))
         	{
+        		secondPlayer.render(graphicsObject);
         		temporaryObject.render(graphicsObject);
         	}
         }
@@ -172,6 +164,8 @@ public class ObjectHandler
         
         for(int i = 0; i < imageHeight; i++) 
         {
+            Main.currentState = State.GAME;
+        	
             for(int j = 0; j < imageWidth; j++) 
             {
                 int currentPixel = image.getRGB(i, j);
@@ -249,8 +243,6 @@ public class ObjectHandler
                 Main.cameraObject.tick(Main.getCameraFocus());
             }
         }
-        
-        Main.currentState = State.GAME;
     }
 
 
