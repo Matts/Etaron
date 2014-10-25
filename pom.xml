@@ -13,7 +13,7 @@
     <groupId>nl.dalthow</groupId>
     <artifactId>et-parent</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1.0</version>
+    <version>0.1.0.0</version>
     
     <modules>
         <module>et-game</module>

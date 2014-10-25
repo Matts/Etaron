@@ -4,7 +4,7 @@
     <parent>
         <artifactId>et-parent</artifactId>
         <groupId>nl.dalthow</groupId>
-        <version>0.0.1.0</version>
+        <version>0.1.0.0</version>
     </parent>
     
     <artifactId>et-game</artifactId>
@@ -17,6 +17,7 @@
         <dependency>
             <groupId>nl.dalthow</groupId>
             <artifactId>et-common-api</artifactId>
+            <version>0.1.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

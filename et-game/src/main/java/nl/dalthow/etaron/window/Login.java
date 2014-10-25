@@ -12,6 +12,8 @@ package nl.dalthow.etaron.window;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -106,6 +108,11 @@ public class Login
             }
         });
 
+        Image image = Toolkit.getDefaultToolkit().createImage(ClassLoader.getSystemResource("global/icon.png"));
+        
+        frame.setIconImage(image);
+
+        
         placeComponents(credentialContent);
     }
 

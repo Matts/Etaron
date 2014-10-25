@@ -4,7 +4,7 @@
     <parent>
         <artifactId>et-parent</artifactId>
         <groupId>nl.dalthow</groupId>
-        <version>0.0.1.0</version>
+        <version>0.1.0.0</version>
     </parent>
     <artifactId>et-common-api</artifactId>
 </project>

@@ -10,6 +10,8 @@
 package nl.dalthow.etaron.window;
 
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -78,6 +80,10 @@ public class Settings
         frame.setSize(new Dimension(width, height));
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.setResizable(false);
+        
+        Image image = Toolkit.getDefaultToolkit().createImage(ClassLoader.getSystemResource("global/icon.png"));
+        
+        frame.setIconImage(image);
     }
 
     // Initialises all the components used in the window after spring creates the instance
