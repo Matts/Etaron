@@ -12,10 +12,13 @@ package nl.dalthow.etaron.window;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.annotation.PostConstruct;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +27,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import nl.dalthow.etaron.base.Main;
+import nl.dalthow.etaron.framework.State;
 import nl.dalthow.etaron.handler.SoundHandler;
 import nl.dalthow.etaron.service.AccessClient;
 
@@ -46,7 +50,9 @@ public class Settings
    
     private JLabel musicVolumeLabel;
     private JLabel soundVolumeLabel;
-   
+    
+    private JButton creditsButton;
+    
     public static JSlider musicVolumeSlider;
     public static JSlider soundVolumeSlider;
 
@@ -74,6 +80,8 @@ public class Settings
         musicVolumeSlider = new JSlider(JSlider.HORIZONTAL, 0, 10, 0);
         soundVolumeSlider = new JSlider(JSlider.HORIZONTAL, 0, 10, 0);
 
+        creditsButton = new JButton("Credits");
+        
         frame.pack();
         frame.add(settingsContent);
 
@@ -135,6 +143,20 @@ public class Settings
         soundVolumeSlider.addChangeListener(new onSoundSliderChange());
         soundVolumeSlider.setPaintLabels(true);
         settingsContent.add(soundVolumeSlider);
+        
+        creditsButton.setBounds(87, 180, 75, 25);
+        creditsButton.addActionListener(new ActionListener()
+        {
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				frame.setVisible(false);
+				
+				Main.currentState = State.CREDITS;
+			}
+        });
+        
+        settingsContent.add(creditsButton);
     }
 
     public void show() 

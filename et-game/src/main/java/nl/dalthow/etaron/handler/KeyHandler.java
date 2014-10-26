@@ -82,13 +82,13 @@ public class KeyHandler extends KeyAdapter
 	                }
 	            }
 	        }
-	
-	        if(currentKey == KeyEvent.VK_ESCAPE) 
-	        {
-	            Main.currentState = State.MENU;
-	
-	            soundHandler.musicClip.stop();
-	        }
+        }
+        
+        if(currentKey == KeyEvent.VK_ESCAPE) 
+        {
+            Main.currentState = State.MENU;
+
+            soundHandler.musicClip.stop();
         }
     }
 

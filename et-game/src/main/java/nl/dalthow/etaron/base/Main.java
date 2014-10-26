@@ -178,6 +178,7 @@ public class Main extends Canvas implements Runnable
         easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_CAVEMAN));
         easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_THE_FALL));
         easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_INVADERS));
+        easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_TWINS));
         
         mediumLevelPage.add(resourceLoader.get(ImageResource.LEVEL_UNDER_FIRE));
        
@@ -320,6 +321,11 @@ public class Main extends Canvas implements Runnable
             }
         } 
         
+        else if(currentState == State.CREDITS)
+        {
+        	
+        }
+        
         else if(currentState == State.GAME) 
         {	
         	if(loadTimeRemaining > 0)
@@ -369,7 +375,7 @@ public class Main extends Canvas implements Runnable
             graphics.drawImage(resourceLoader.get(ImageResource.LOGO), 0, 0, getWidth(), getHeight(), this);
         }
 
-        if(currentState == State.MENU) 
+        else if(currentState == State.MENU) 
         {
             graphics.setColor(new Color(20, 20, 20));
             graphics.fillRect(0, 0, windowWidth, windowHeight);
@@ -479,7 +485,7 @@ public class Main extends Canvas implements Runnable
 						}
 				break;
             }
-
+                       
             graphics.drawImage(resourceLoader.get(ImageResource.BUTTON_NEXT), windowWidth - 115, windowHeight / 2 - 40, 40, 80, this);
             graphics.drawImage(resourceLoader.get(ImageResource.BUTTON_BACK), 75, windowHeight / 2 - 40, 40, 80, this);
 
@@ -497,7 +503,7 @@ public class Main extends Canvas implements Runnable
             }
         }
 
-        if(currentState == State.GAME) 
+        else if(currentState == State.GAME) 
 		{
         	graphics.setColor(new Color(0, 0, 0));
             graphics.fillRect(0, 0, windowWidth, windowHeight);
@@ -547,6 +553,12 @@ public class Main extends Canvas implements Runnable
                  graphics.setColor(new Color(255, 255, 255));
                  graphics.fillRect(windowHeight / 2 + 5, windowHeight / 2 + 15, 250 - loadTimeRemaining, 10);
         	}
+        }
+        
+        else if(currentState == State.CREDITS)
+        {
+        	graphics.setColor(new Color(20, 20, 20));
+            graphics.fillRect(0, 0, windowWidth, windowHeight);
         }
         
         graphics.dispose();

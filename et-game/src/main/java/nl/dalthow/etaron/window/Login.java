@@ -112,7 +112,6 @@ public class Login
         
         frame.setIconImage(image);
 
-        
         placeComponents(credentialContent);
     }
 
@@ -174,7 +173,6 @@ public class Login
 
                         frame.setVisible(false);
                     }
-
                 } 
                 
                 catch(HeadlessException error) 
