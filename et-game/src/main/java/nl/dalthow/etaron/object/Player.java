@@ -145,7 +145,11 @@ public class Player extends WorldObject
                 if(getBoundsTop().intersects(temporaryObject.getBounds())) 
                 {
                 	yPos = temporaryObject.getPosY() + (playerHeight / 2);
-                    yVel = 0;
+                    
+                    if(!(temporaryObject.getId() == Identifier.PLATFORM))
+                    {
+                    	yVel = 0;
+                    }
                 }
 
                 if(getBoundsBottom().intersects(temporaryObject.getBounds())) 
