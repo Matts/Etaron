@@ -199,7 +199,7 @@ public class Login
             {
                 try 
                 {
-                    Desktop.getDesktop().browse(new URL("http://www.dalthow.nl/registration.php").toURI());
+                    Desktop.getDesktop().browse(new URL("http://www.dalthow.com/registration.php").toURI());
                 } 
                 
                 catch (Exception error) 
