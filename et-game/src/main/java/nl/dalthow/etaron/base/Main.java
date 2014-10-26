@@ -559,6 +559,9 @@ public class Main extends Canvas implements Runnable
         {
         	graphics.setColor(new Color(20, 20, 20));
             graphics.fillRect(0, 0, windowWidth, windowHeight);
+            
+            setFontAttributes(graphics, defaultFont, new Color(255, 255, 255), 32);
+            graphics.drawString((String)applicationContext.getBean("credits"), windowWidth / 2 - 94, windowHeight / 2);
         }
         
         graphics.dispose();

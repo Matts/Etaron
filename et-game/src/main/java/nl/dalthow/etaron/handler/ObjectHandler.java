@@ -33,15 +33,14 @@ public class ObjectHandler
     private BufferedImage currentLevel;
     
     private WorldObject temporaryObject;
-    
-    private Player firstPlayer;
-    private Player secondPlayer;
+    private Player temporaryPlayer;
     
     @Autowired
     private ApplicationContext applicationContext;
 
     public LinkedList<WorldObject> objects = new LinkedList<>();
-   
+    public LinkedList<Player> players = new LinkedList<>();
+    
            
     // Constructor
     
@@ -55,21 +54,15 @@ public class ObjectHandler
     
     public void tick() 
     {
+    	players.clear();
+    	
         for(int i = 0; i < objects.size(); i++) 
         {
             temporaryObject = objects.get(i);
                        
             if(temporaryObject.getId() == Identifier.PLAYER)
             {
-            	if(firstPlayer == null)
-                {
-                	firstPlayer = (Player) temporaryObject;
-                }
-                
-                else if(secondPlayer == null)
-                {
-                	secondPlayer = (Player) temporaryObject;
-                }
+            	players.add((Player)temporaryObject);
             }
             
             if(temporaryObject.getId() == Identifier.COIN || temporaryObject.getId() == Identifier.TURRET || temporaryObject.getId() == Identifier.PLATFORM || temporaryObject.getId() == Identifier.BULLET)
@@ -79,14 +72,14 @@ public class ObjectHandler
             
             else
             {
-            	if(firstPlayer != null && firstPlayer.getUpdateBounds().intersects(temporaryObject.getBounds()))
+            	for(int j = 0; j < players.size(); j++)
             	{
-            		temporaryObject.tick(objects);
-            	}
-            	
-            	else if(secondPlayer != null && secondPlayer.getUpdateBounds().intersects(temporaryObject.getBounds()))
-            	{
-            		temporaryObject.tick(objects);
+            		temporaryPlayer = players.get(j);
+            		
+            		if(temporaryPlayer != null && temporaryPlayer.getUpdateBounds().intersects(temporaryObject.getBounds()))
+            		{
+            			temporaryObject.tick(objects);
+            		}
             	}
             }
         }
@@ -101,16 +94,14 @@ public class ObjectHandler
         {
             temporaryObject = objects.get(i);
               
-        	if(firstPlayer != null && firstPlayer.getRenderBounds().intersects(temporaryObject.getBounds()))
+            for(int j = 0; j < players.size(); j++)
         	{
-        		firstPlayer.render(graphicsObject);
-        		temporaryObject.render(graphicsObject);
-        	}
-        	
-        	else if(secondPlayer != null && secondPlayer.getRenderBounds().intersects(temporaryObject.getBounds()))
-        	{
-        		secondPlayer.render(graphicsObject);
-        		temporaryObject.render(graphicsObject);
+        		temporaryPlayer = players.get(j);
+        		
+        		if(temporaryPlayer != null && temporaryPlayer.getRenderBounds().intersects(temporaryObject.getBounds()))
+        		{
+        			temporaryObject.render(graphicsObject);
+        		}
         	}
         }
     }
@@ -121,9 +112,7 @@ public class ObjectHandler
     public void clearLevel() 
     {
         objects.clear();
-        
-        firstPlayer = null;
-        secondPlayer = null;
+        players.clear();
         
         Main.cameraObject.setPosX(0); 
         Main.cameraObject.setPosY(0);
