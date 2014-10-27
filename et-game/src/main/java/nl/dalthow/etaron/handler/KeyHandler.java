@@ -197,7 +197,7 @@ public class KeyHandler extends KeyAdapter
 	            if(objectHandler.players.size() > 1)
 	            {
 		            cameraShouldFocus.setVelX(0);
-		         
+		          
 		            if(Main.getCameraFocus().equals(objectHandler.players.getFirst()))
 	        		{
 		            	cameraShouldFocus = objectHandler.players.getLast();
