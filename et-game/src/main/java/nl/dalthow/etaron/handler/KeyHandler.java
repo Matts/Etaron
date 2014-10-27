@@ -35,6 +35,8 @@ public class KeyHandler extends KeyAdapter
     
     public static WorldObject cameraShouldFocus;
 
+    private int currentPlayer = 0; 
+    
 
     // Constructor
     
@@ -145,25 +147,13 @@ public class KeyHandler extends KeyAdapter
         
 	        if(currentKey == KeyEvent.VK_E) 
             {
-	        	LinkedList<Integer> allPlayers = new LinkedList<Integer>();
-	                
-	            for(int i = 0; i < objectHandler.objects.size(); i++) 
-	            {
-	                WorldObject temporaryObject = objectHandler.objects.get(i);
-	            	
-	                if(temporaryObject.getId() == Identifier.PLAYER) 
-	                {
-	                	allPlayers.add(i);
-	                }
-	            }
-	            
 	            Player oldKeyHolder;
 	            Player newKeyHolder;
 	            
-	            if(Main.getCameraFocus().equals(objectHandler.objects.get(allPlayers.getFirst())))
+	            if(Main.getCameraFocus().equals(objectHandler.players.getFirst()))
         		{
-	            	oldKeyHolder = (Player)objectHandler.objects.get(allPlayers.getFirst());
-            		newKeyHolder = (Player)objectHandler.objects.get(allPlayers.getLast());
+	            	oldKeyHolder = (Player)objectHandler.players.getFirst();
+            		newKeyHolder = (Player)objectHandler.players.getLast();
 		            
             		if(oldKeyHolder.getUpdateBounds().intersects(newKeyHolder.getUpdateBounds()))
             		{
@@ -182,9 +172,9 @@ public class KeyHandler extends KeyAdapter
 	            
 	            else
 	            {
-	            	oldKeyHolder = (Player)objectHandler.objects.get(allPlayers.getLast());
-	            	newKeyHolder = (Player)objectHandler.objects.get(allPlayers.getFirst());
-	            	
+	            	oldKeyHolder = (Player)objectHandler.players.getLast();
+            		newKeyHolder = (Player)objectHandler.players.getFirst();
+		            
 	            	if(oldKeyHolder.getUpdateBounds().intersects(newKeyHolder.getUpdateBounds()))
             		{
 		            	if(oldKeyHolder.hasKey && newKeyHolder.hasKey)
@@ -204,30 +194,18 @@ public class KeyHandler extends KeyAdapter
 	        
         	if(currentKey == KeyEvent.VK_Q) 
             {
-                LinkedList<Integer> allPlayers = new LinkedList<Integer>();
-                
-	            for(int i = 0; i < objectHandler.objects.size(); i++) 
-	            {
-	                WorldObject temporaryObject = objectHandler.objects.get(i);
-	            	
-	                if(temporaryObject.getId() == Identifier.PLAYER) 
-	                {
-	                	allPlayers.add(i);
-	                }
-	            }
-	            
-	            if(allPlayers.size() > 1)
+	            if(objectHandler.players.size() > 1)
 	            {
 		            cameraShouldFocus.setVelX(0);
 		         
-		            if(Main.getCameraFocus().equals(objectHandler.objects.get(allPlayers.getFirst())))
+		            if(Main.getCameraFocus().equals(objectHandler.players.getFirst()))
 	        		{
-		            	cameraShouldFocus = objectHandler.objects.get(allPlayers.getLast());
+		            	cameraShouldFocus = objectHandler.players.getLast();
 	        		}
 		            
 		            else
 		            {
-		            	cameraShouldFocus = objectHandler.objects.get(allPlayers.getFirst());
+		            	cameraShouldFocus = objectHandler.players.getFirst();
 		            }
 		            
 		            Main.setCameraFocus(cameraShouldFocus);
