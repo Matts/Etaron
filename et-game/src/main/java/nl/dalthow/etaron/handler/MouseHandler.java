@@ -163,7 +163,7 @@ public class MouseHandler implements MouseListener
 				}
 			}
 
-			if(event.getX() > 768 && event.getX() < 963 && event.getY() > 715 && event.getY() < 726 && Main.user == null) 
+			if(event.getX() > 766 && event.getX() < 965 && event.getY() > 715 && event.getY() < 726 && Main.user == null) 
 			{
 				login.show();
 			}
