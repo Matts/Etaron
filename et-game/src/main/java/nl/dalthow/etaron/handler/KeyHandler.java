@@ -11,10 +11,8 @@ package nl.dalthow.etaron.handler;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.LinkedList;
 
 import nl.dalthow.etaron.base.Main;
-import nl.dalthow.etaron.framework.Identifier;
 import nl.dalthow.etaron.framework.State;
 import nl.dalthow.etaron.framework.WorldObject;
 import nl.dalthow.etaron.object.Player;
@@ -35,9 +33,8 @@ public class KeyHandler extends KeyAdapter
     
     public static WorldObject cameraShouldFocus;
 
-    private int currentPlayer = 0; 
+     
     
-
     // Constructor
     
     private KeyHandler() 
@@ -89,7 +86,8 @@ public class KeyHandler extends KeyAdapter
         if(currentKey == KeyEvent.VK_ESCAPE) 
         {
             Main.currentState = State.MENU;
-
+            Main.tickInCredits = 0;
+            
             soundHandler.musicClip.stop();
         }
     }

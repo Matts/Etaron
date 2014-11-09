@@ -67,11 +67,13 @@ public class Main extends Canvas implements Runnable
     private int temporaryFrames, absoluteFrames;
     private int temporaryTicks, absoluteTicks;
     private int tickToMenu;
-    
+  
     private static WorldObject cameraFocus;
     
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
+    public static int tickInCredits;
+    
     public static LinkedList<BufferedImage> easyLevelPage = new LinkedList<>();
     public static LinkedList<BufferedImage> mediumLevelPage = new LinkedList<>();
     public static LinkedList<BufferedImage> hardLevelPage = new LinkedList<>();
@@ -140,6 +142,7 @@ public class Main extends Canvas implements Runnable
         cameraObject = new Camera(0, 0);
 
         tickToMenu = 60;
+        tickInCredits = 0;
         loadTimeRemaining = 0;
 
         currentPage = 0;
@@ -323,7 +326,7 @@ public class Main extends Canvas implements Runnable
         
         else if(currentState == State.CREDITS)
         {
-        	
+        	tickInCredits++;
         }
         
         else if(currentState == State.GAME) 
@@ -394,7 +397,7 @@ public class Main extends Canvas implements Runnable
 
             if(user != null)
             {
-                graphics.drawString("Welcome" + " " + user.getUserName() + "!", 820, 726);
+                graphics.drawString("Welcome" + " " + user.getUserName() + "!", windowWidth - (graphics.getFontMetrics().stringWidth("Welcome" + " " + user.getUserName() + "!") + 4), 726);
             }
             
             else 
@@ -562,7 +565,7 @@ public class Main extends Canvas implements Runnable
             
             setFontAttributes(graphics, defaultFont, new Color(255, 255, 255), 32);
            
-            drawString(graphics, (String)applicationContext.getBean("credits"), windowWidth / 2 - 94, windowHeight / 2);
+            drawString(graphics, (String)applicationContext.getBean("credits"), 15, 15 + -tickInCredits);
         }
         
         graphics.dispose();
