@@ -14,6 +14,7 @@ import java.awt.event.MouseListener;
 
 import nl.dalthow.etaron.base.Main;
 import nl.dalthow.etaron.framework.State;
+import nl.dalthow.etaron.window.Keys;
 import nl.dalthow.etaron.window.Login;
 import nl.dalthow.etaron.window.Settings;
 
@@ -37,7 +38,7 @@ public class MouseHandler implements MouseListener
 
     @Autowired
     private Login login;
-
+    
     @Autowired
     private ApplicationContext applicationContext;
 

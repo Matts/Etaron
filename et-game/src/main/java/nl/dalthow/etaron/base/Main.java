@@ -28,8 +28,10 @@ import java.util.Random;
 import javax.swing.SwingUtilities;
 
 import nl.dalthow.etaron.framework.Camera;
+import nl.dalthow.etaron.framework.KeyMap;
 import nl.dalthow.etaron.framework.State;
 import nl.dalthow.etaron.framework.WorldObject;
+import nl.dalthow.etaron.framework.XmlConverter;
 import nl.dalthow.etaron.handler.ObjectHandler;
 import nl.dalthow.etaron.handler.SoundHandler;
 import nl.dalthow.etaron.loader.FontResource;
@@ -54,7 +56,7 @@ public class Main extends Canvas implements Runnable
     private boolean isRunning = false;
 
     private Thread gameThread;
-    
+
     @Autowired
     private ObjectHandler objectHandler;
     
@@ -72,8 +74,6 @@ public class Main extends Canvas implements Runnable
     
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
-    public static int tickInCredits;
-    
     public static LinkedList<BufferedImage> easyLevelPage = new LinkedList<>();
     public static LinkedList<BufferedImage> mediumLevelPage = new LinkedList<>();
     public static LinkedList<BufferedImage> hardLevelPage = new LinkedList<>();
@@ -115,6 +115,8 @@ public class Main extends Canvas implements Runnable
 
     public static float playerMovementSpeed;
     public static float playerJumpingHeight;
+  
+    public static final String keyBindings = "keys.xml";
     
     
     // Constructor
@@ -142,7 +144,6 @@ public class Main extends Canvas implements Runnable
         cameraObject = new Camera(0, 0);
 
         tickToMenu = 60;
-        tickInCredits = 0;
         loadTimeRemaining = 0;
 
         currentPage = 0;
@@ -161,6 +162,13 @@ public class Main extends Canvas implements Runnable
         
         addKeyListener(keyHandler);
         addMouseListener(mouseHandler);
+        
+//        System.out.println("Convert XML back to Object!");
+//        XmlConverter converter = (XmlConverter) applicationContext.getBean("XMLConverter");
+//	     
+//		KeyMap customer2 = (KeyMap)converter.convertFromXMLToObject(this.keyBindings);
+//		System.out.println(customer2);
+//		System.out.println("Done");
     }
 
     
@@ -323,11 +331,6 @@ public class Main extends Canvas implements Runnable
                 tickToMenu--;
             }
         } 
-        
-        else if(currentState == State.CREDITS)
-        {
-        	tickInCredits++;
-        }
         
         else if(currentState == State.GAME) 
         {	
@@ -558,16 +561,6 @@ public class Main extends Canvas implements Runnable
                  graphics.setColor(new Color(255, 255, 255));
                  graphics.fillRect(windowHeight / 2 + 5, windowHeight / 2 + 15, 250 - loadTimeRemaining, 10);
         	}
-        }
-        
-        else if(currentState == State.CREDITS)
-        {
-        	graphics.setColor(new Color(20, 20, 20));
-            graphics.fillRect(0, 0, windowWidth, windowHeight);
-            
-            setFontAttributes(graphics, defaultFont, new Color(255, 255, 255), 32);
-           
-            drawString(graphics, (String)applicationContext.getBean("credits"), 15, 15 + -tickInCredits);
         }
         
         graphics.dispose();

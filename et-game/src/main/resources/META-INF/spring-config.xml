@@ -13,6 +13,13 @@
             </list>
         </property>
     </bean>
+    
+    <bean id="XMLConverter" class="nl.dalthow.etaron.framework.XmlConverter">
+		<property name="marshaller" ref="castorMarshaller" />
+		<property name="unmarshaller" ref="castorMarshaller" />
+	</bean>
+	
+	<bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller"/>
 
     <import resource="classpath:META-INF/ws/client-config.xml"/>
     <import resource="classpath:META-INF/resource-loader.xml"/>

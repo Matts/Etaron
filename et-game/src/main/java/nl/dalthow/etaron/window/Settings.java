@@ -27,7 +27,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import nl.dalthow.etaron.base.Main;
-import nl.dalthow.etaron.framework.State;
 import nl.dalthow.etaron.handler.SoundHandler;
 import nl.dalthow.etaron.service.AccessClient;
 
@@ -51,7 +50,7 @@ public class Settings
     private JLabel musicVolumeLabel;
     private JLabel soundVolumeLabel;
     
-    private JButton creditsButton;
+    private JButton keyBindings;
     
     public static JSlider musicVolumeSlider;
     public static JSlider soundVolumeSlider;
@@ -63,6 +62,9 @@ public class Settings
 
     @Autowired
     private AccessClient accessClient;
+    
+    @Autowired
+    private Keys keys;
 
     
     // Creates the window where everything gets projected on
@@ -80,7 +82,7 @@ public class Settings
         musicVolumeSlider = new JSlider(JSlider.HORIZONTAL, 0, 10, 0);
         soundVolumeSlider = new JSlider(JSlider.HORIZONTAL, 0, 10, 0);
 
-        creditsButton = new JButton("Credits");
+        keyBindings = new JButton("Keys");
         
         frame.pack();
         frame.add(settingsContent);
@@ -144,19 +146,17 @@ public class Settings
         soundVolumeSlider.setPaintLabels(true);
         settingsContent.add(soundVolumeSlider);
         
-        creditsButton.setBounds(87, 180, 75, 25);
-        creditsButton.addActionListener(new ActionListener()
+        keyBindings.setBounds(87, 180, 75, 25);
+        keyBindings.addActionListener(new ActionListener()
         {
 			@Override
-			public void actionPerformed(ActionEvent arg0)
+			public void actionPerformed(ActionEvent event)
 			{
-				frame.setVisible(false);
-				
-				Main.currentState = State.CREDITS;
+				keys.frame.show();
 			}
         });
         
-        settingsContent.add(creditsButton);
+        settingsContent.add(keyBindings);
     }
 
     public void show() 

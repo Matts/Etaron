@@ -30,16 +30,15 @@ public class KeyHandler extends KeyAdapter
 
     @Autowired
     private SoundHandler soundHandler;
-    
+  	
     public static WorldObject cameraShouldFocus;
 
-     
     
     // Constructor
     
     private KeyHandler() 
     {
-        
+    	
     }
 
 
@@ -57,19 +56,19 @@ public class KeyHandler extends KeyAdapter
 	
 	            if(temporaryObject.equals(cameraShouldFocus)) 
 	            {
-	                if(currentKey == KeyEvent.VK_W && !temporaryObject.isJumping()) 
+	                if(currentKey == 87 && !temporaryObject.isJumping()) 
 	                {
 	                    temporaryObject.setVelY(-Main.playerJumpingHeight);
 	                    temporaryObject.setJumping(true);
 	                }
 	
-	                if(currentKey == KeyEvent.VK_D) 
+	                if(currentKey == 68) 
 	                {
 	                    temporaryObject.setVelX(Main.playerMovementSpeed);
 	                    temporaryObject.setFacing(1);
 	                }
 	
-	                if(currentKey == KeyEvent.VK_A) 
+	                if(currentKey == 65) 
 	                {
 	                    temporaryObject.setVelX(-Main.playerMovementSpeed);
 	                    temporaryObject.setFacing(0);
@@ -86,8 +85,7 @@ public class KeyHandler extends KeyAdapter
         if(currentKey == KeyEvent.VK_ESCAPE) 
         {
             Main.currentState = State.MENU;
-            Main.tickInCredits = 0;
-            
+         
             soundHandler.musicClip.stop();
         }
     }

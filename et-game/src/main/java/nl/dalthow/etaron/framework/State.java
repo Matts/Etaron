@@ -15,6 +15,5 @@ public enum State
 	
 	SPLASH,
     GAME,
-    MENU,
-    CREDITS;
+    MENU;
 }
