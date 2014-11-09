@@ -393,7 +393,7 @@ public class Main extends Canvas implements Runnable
             graphics.drawString(title, windowWidth / 2 - 220, 120);
 
             setFontAttributes(graphics, defaultFont, new Color(255, 255, 255), 14);
-            graphics.drawString("Version:" + " " + version, 40, 726);
+            graphics.drawString("VERSION" + " " + version, 40, 726);
 
             if(user != null)
             {
