@@ -109,7 +109,7 @@ public class KeyHandler extends KeyAdapter
         	
         	if(currentKey == Main.map.getMoveRight())
         	{
-        		if(Main.currentPage < 3) 
+        		if(Main.currentPage < 2) 
 				{
 					Main.currentPage++;
 				}
