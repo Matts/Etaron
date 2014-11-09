@@ -116,6 +116,8 @@ public class Main extends Canvas implements Runnable
     public static float playerMovementSpeed;
     public static float playerJumpingHeight;
   
+    public static KeyMap map;
+    
     public static final String keyBindings = "keys.xml";
     
     
@@ -131,7 +133,17 @@ public class Main extends Canvas implements Runnable
     
     private void preInitialisation() 
     {
-    	
+    	XmlConverter converter = (XmlConverter) applicationContext.getBean("XMLConverter");
+	     
+		try 
+		{
+			map = (KeyMap)converter.convertFromXMLToObject(Main.keyBindings);
+		} 
+		
+		catch(IOException error) 
+		{
+			logger.error(error.getMessage());
+		}
     }
     
     
@@ -162,13 +174,6 @@ public class Main extends Canvas implements Runnable
         
         addKeyListener(keyHandler);
         addMouseListener(mouseHandler);
-        
-//        System.out.println("Convert XML back to Object!");
-//        XmlConverter converter = (XmlConverter) applicationContext.getBean("XMLConverter");
-//	     
-//		KeyMap customer2 = (KeyMap)converter.convertFromXMLToObject(this.keyBindings);
-//		System.out.println(customer2);
-//		System.out.println("Done");
     }
 
     

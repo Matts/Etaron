@@ -19,8 +19,10 @@
 		<property name="unmarshaller" ref="castorMarshaller" />
 	</bean>
 	
-	<bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller"/>
-
+	<bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller" >
+		<property name="mappingLocation" value="classpath:META-INF/mapping.xml" />
+	</bean>
+	
     <import resource="classpath:META-INF/ws/client-config.xml"/>
     <import resource="classpath:META-INF/resource-loader.xml"/>
 </beans>

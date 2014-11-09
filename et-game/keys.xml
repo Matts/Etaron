@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<key-map jump="87" switch-player="81" trade-item="69" back-key="27" move-right="68" move-left="65" performance-info="114"/>
+<key-map jump="87" moveRight="68" moveLeft="65" tradeItem="69" switchPlayer="81" backKey="27" performanceInfo="114"/>

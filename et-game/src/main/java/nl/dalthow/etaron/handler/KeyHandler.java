@@ -56,25 +56,25 @@ public class KeyHandler extends KeyAdapter
 	
 	            if(temporaryObject.equals(cameraShouldFocus)) 
 	            {
-	                if(currentKey == 87 && !temporaryObject.isJumping()) 
+	                if(currentKey == Main.map.getJump() && !temporaryObject.isJumping()) 
 	                {
 	                    temporaryObject.setVelY(-Main.playerJumpingHeight);
 	                    temporaryObject.setJumping(true);
 	                }
 	
-	                if(currentKey == 68) 
+	                if(currentKey == Main.map.getMoveRight()) 
 	                {
 	                    temporaryObject.setVelX(Main.playerMovementSpeed);
 	                    temporaryObject.setFacing(1);
 	                }
 	
-	                if(currentKey == 65) 
+	                if(currentKey == Main.map.getMoveLeft()) 
 	                {
 	                    temporaryObject.setVelX(-Main.playerMovementSpeed);
 	                    temporaryObject.setFacing(0);
 	                }
 	                
-	                if(currentKey == KeyEvent.VK_F3) 
+	                if(currentKey == Main.map.getPerformanceInfo()) 
 	                {
 	                    Main.displayInfo = true;
 	                }
@@ -82,7 +82,7 @@ public class KeyHandler extends KeyAdapter
 	        }
         }
         
-        if(currentKey == KeyEvent.VK_ESCAPE) 
+        if(currentKey == Main.map.getBackKey()) 
         {
             Main.currentState = State.MENU;
          
@@ -99,7 +99,7 @@ public class KeyHandler extends KeyAdapter
 
         if(Main.currentState == State.MENU)
         {
-        	if(currentKey == KeyEvent.VK_A)
+        	if(currentKey == Main.map.getMoveLeft())
         	{
         		if(Main.currentPage > 0) 
 				{
@@ -107,7 +107,7 @@ public class KeyHandler extends KeyAdapter
 				}
         	}
         	
-        	if(currentKey == KeyEvent.VK_D)
+        	if(currentKey == Main.map.getMoveRight())
         	{
         		if(Main.currentPage < 3) 
 				{
@@ -124,24 +124,24 @@ public class KeyHandler extends KeyAdapter
 	
 	            if(temporaryObject.equals(cameraShouldFocus))
 	            {
-	                if(currentKey == KeyEvent.VK_D)
+	                if(currentKey == Main.map.getMoveRight())
 	                {
 	                    temporaryObject.setVelX(0);
 	                }
 	
-	                if(currentKey == KeyEvent.VK_A)
+	                if(currentKey == Main.map.getMoveLeft())
 	                {
 	                    temporaryObject.setVelX(0);
 	                }
 	
-	                if(currentKey == KeyEvent.VK_F3) 
+	                if(currentKey == Main.map.getPerformanceInfo()) 
 	                {
 	                    Main.displayInfo = false;
 	                }
 	            }
 	        }
         
-	        if(currentKey == KeyEvent.VK_E) 
+	        if(currentKey == Main.map.getTradeItem()) 
             {
 	            Player oldKeyHolder;
 	            Player newKeyHolder;
@@ -188,7 +188,7 @@ public class KeyHandler extends KeyAdapter
 	            }
             }
 	        
-        	if(currentKey == KeyEvent.VK_Q) 
+        	if(currentKey == Main.map.getSwitchPlayer()) 
             {
 	            if(objectHandler.players.size() > 1)
 	            {
