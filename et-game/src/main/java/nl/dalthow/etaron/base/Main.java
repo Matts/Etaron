@@ -561,14 +561,26 @@ public class Main extends Canvas implements Runnable
             graphics.fillRect(0, 0, windowWidth, windowHeight);
             
             setFontAttributes(graphics, defaultFont, new Color(255, 255, 255), 32);
-            graphics.drawString((String)applicationContext.getBean("credits"), windowWidth / 2 - 94, windowHeight / 2);
+           
+            drawString(graphics, (String)applicationContext.getBean("credits"), windowWidth / 2 - 94, windowHeight / 2);
         }
         
         graphics.dispose();
         bufferObject.show();
     }
 
+    
+    // Draws a string with new lines on the canvas
+    
+    void drawString(Graphics graphics, String text, int xPos, int yPos) 
+    {
+        for(String line : text.split("\n"))
+        {
+        	graphics.drawString(line, xPos, yPos += graphics.getFontMetrics().getHeight());
+        }
+    }
 
+    
     // Displays the score for each level
 
 	private void displayScore(Graphics graphics, int i, int xModifier, int yModifier) 

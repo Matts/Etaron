@@ -1,4 +1,4 @@
-Etaron \n
+Etaron
 
 A game by Dalthow Game Studios.
 
@@ -6,9 +6,22 @@ A game by Dalthow Game Studios.
 Lead developers
 
 Trevi Awater
-Alen 
+Alen Struklec
 
+
+Side developers
+
+Corneliu Nicolae
+
+
+Web developers
+
+Luke Paris
+Trevi Awater
 
 
 Level designers
 
+Alex Mehlbaum
+Jordy Kramer
+Trevi Awater
