@@ -397,12 +397,14 @@ public class Main extends Canvas implements Runnable
 
             if(user != null)
             {
-                graphics.drawString("Welcome" + " " + user.getUserName() + "!", windowWidth - (graphics.getFontMetrics().stringWidth("Welcome" + " " + user.getUserName() + "!") + 4), 726);
+            	String welcomeMessage = "Welcome" + " " + user.getUserName() + "!";
+                graphics.drawString(welcomeMessage, windowWidth - (graphics.getFontMetrics().stringWidth(welcomeMessage) + 4), 726);
             }
             
             else 
             {
-                graphics.drawString("Click here to log in", 768, 725);
+            	String loginMessage = "Click here to log in.";
+                graphics.drawString(loginMessage, windowWidth - (graphics.getFontMetrics().stringWidth(loginMessage) + 4), 726);
             }
 
             switch(currentPage) 
