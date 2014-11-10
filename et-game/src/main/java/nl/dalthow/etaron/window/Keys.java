@@ -23,6 +23,7 @@ import java.io.IOException;
 import javax.annotation.PostConstruct;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import nl.dalthow.etaron.base.Main;
@@ -52,7 +53,9 @@ public class Keys
 	@Autowired
     private ApplicationContext applicationContext;
 	
-	private JButton[] buttons  = new JButton[7];
+	private JButton[] buttons = new JButton[7];
+	private JLabel[] labels = new JLabel[7];
+    
 	private KeyMap map;
 	private JButton selectedButton;
 	
@@ -64,7 +67,6 @@ public class Keys
 		frame = new JFrame(title);
 		map = new KeyMap();
 		
-       
         frame.addWindowListener(new WindowAdapter() 
         {
 	        @Override
@@ -79,10 +81,11 @@ public class Keys
 	    		map.setSwitchPlayer(Integer.parseInt(buttons[4].getText()));
 	    		map.setPerformanceInfo(Integer.parseInt(buttons[5].getText()));
 	    		map.setTradeItem(Integer.parseInt(buttons[6].getText()));
-	     
+	    		
 	    		try 
 	    		{
 					converter.convertFromObjectToXML(map, Main.keyBindings);
+					Main.map = map;
 					
 					logger.info("Saving keybindings file.");
 				} 
@@ -118,6 +121,8 @@ public class Keys
     @PostConstruct
     private void placeComponents() 
     { 
+    	keysContent.setLayout(null);
+
     	KeyAdapter keyPicker = new KeyAdapter() 
         {
             @Override public void keyPressed(KeyEvent event) 
@@ -138,22 +143,29 @@ public class Keys
 			logger.error(error.getMessage());
 		}
         
-        String[] names = {Integer.toString(map.getJump()), Integer.toString(map.getMoveLeft()), Integer.toString(map.getMoveRight()), Integer.toString(map.getBackKey()), Integer.toString(map.getSwitchPlayer()), Integer.toString(map.getTradeItem()), Integer.toString(map.getPerformanceInfo())};
+        String[] values = {Integer.toString(map.getJump()), Integer.toString(map.getMoveLeft()), Integer.toString(map.getMoveRight()), Integer.toString(map.getBackKey()), Integer.toString(map.getSwitchPlayer()), Integer.toString(map.getTradeItem()), Integer.toString(map.getPerformanceInfo())};
+        String[] names = {"Jump", "Back", "Left", "Right", "Switch", "Info", "Trade"};
         
         for(int i = 0; i < buttons.length; i++)
         {
-        	buttons[i] = new JButton(names[i]);
+        	labels[i] = new JLabel(names[i]);
+        	
+        	buttons[i] = new JButton(values[i]);
         	buttons[i].addKeyListener(keyPicker);
         	buttons[i].addActionListener(new ActionListener() 
         	{
                 @Override
                 public void actionPerformed(ActionEvent event) 
                 {
-                    selectedButton = (JButton) event.getSource();
+                    selectedButton = (JButton)event.getSource();
                 }
             });
         	
+        	buttons[i].setBounds(65, 15 + (35 * i), 55, 25);
+        	labels[i].setBounds(15, 15 + (35 * i), 55, 25);
+        	
         	keysContent.add(buttons[i]);
+        	keysContent.add(labels[i]);
         }
     }
 }
