@@ -152,7 +152,7 @@ public class Settings
 			@Override
 			public void actionPerformed(ActionEvent event)
 			{
-				keys.frame.show();
+				keys.show();
 			}
         });
         
