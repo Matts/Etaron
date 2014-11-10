@@ -64,7 +64,7 @@ public class Settings
     private AccessClient accessClient;
     
     @Autowired
-    private Keys keys;
+    private KeyBindings keys;
 
     
     // Creates the window where everything gets projected on
