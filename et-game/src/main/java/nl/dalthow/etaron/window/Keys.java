@@ -52,9 +52,9 @@ public class Keys
 	@Autowired
     private ApplicationContext applicationContext;
 	
-	private JButton[] buttons  = new JButton[6];
-	
+	private JButton[] buttons  = new JButton[7];
 	private KeyMap map;
+	private JButton selectedButton;
 	
 	@Autowired
 	private Keys(@Value("${keys.width}") int width, @Value("${keys.height}") int height, @Value("${keys.title}") String title) 
@@ -72,46 +72,38 @@ public class Keys
 	        {
 	    		XmlConverter converter = (XmlConverter) applicationContext.getBean("XMLConverter");
 	     
-	    		map.setJump(87);
-	    		map.setBackKey(27);
-	    		map.setMoveLeft(65);
-	    		map.setMoveRight(68);
-	    		map.setSwitchPlayer(81);
-	    		map.setPerformanceInfo(114);
-	    		map.setTradeItem(69);
+	    		map.setJump(Integer.parseInt(buttons[0].getText()));
+	    		map.setBackKey(Integer.parseInt(buttons[1].getText()));
+	    		map.setMoveLeft(Integer.parseInt(buttons[2].getText()));
+	    		map.setMoveRight(Integer.parseInt(buttons[3].getText()));
+	    		map.setSwitchPlayer(Integer.parseInt(buttons[4].getText()));
+	    		map.setPerformanceInfo(Integer.parseInt(buttons[5].getText()));
+	    		map.setTradeItem(Integer.parseInt(buttons[6].getText()));
 	     
 	    		try 
 	    		{
 					converter.convertFromObjectToXML(map, Main.keyBindings);
+					
+					logger.info("Saving keybindings file.");
 				} 
 	    		
 	    		catch(IOException error)
 	    		{
 					logger.error(error.getMessage());
 				}
+	    		
+	    		logger.debug("Keys window closed.");
 	        }
         });
         
-        KeyAdapter keyPicker = new KeyAdapter() 
-        {
-            @Override public void keyPressed(KeyEvent event) 
-            {
-            	int currentKey = event.getKeyCode();
-            	
-            	System.out.println(currentKey);
-            }
-        };
-        
-
-       
-        frame.addKeyListener(keyPicker);
-       
         frame.pack();
         frame.add(keysContent);
+        
         frame.setSize(new Dimension(width, height));
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.setResizable(false);
-	    Image image = Toolkit.getDefaultToolkit().createImage(ClassLoader.getSystemResource("global/icon.png"));       
+	  
+        Image image = Toolkit.getDefaultToolkit().createImage(ClassLoader.getSystemResource("global/icon.png"));       
 	   
 	    frame.setIconImage(image);
     }
@@ -126,51 +118,42 @@ public class Keys
     @PostConstruct
     private void placeComponents() 
     { 
-    	String names[] = {"Jump", "Back", "Left", "Right", "Switch", "Performance", "Trade"};
-        
-    	for(int i = 0; i < buttons.length; i++)
+    	KeyAdapter keyPicker = new KeyAdapter() 
         {
-             buttons[i] = new JButton(names[i]);
-             buttons[i].addActionListener(new ActionListener()
-             {
-     			@Override
-     			public void actionPerformed(ActionEvent event)
-     			{
-     				Object source = event.getSource();
-     				
-     				if(source.equals(buttons[0]))
-     				{
-     					System.out.println("0");
-     				}
-     				
-     				if(source.equals(buttons[1]))
-     				{
-     					System.out.println("1");
-     				}
-     				
-     				if(source.equals(buttons[2]))
-     				{
-     					System.out.println("2");
-     				}
-     				
-     				if(source.equals(buttons[3]))
-     				{
-     					System.out.println("3");
-     				}
-     				
-     				if(source.equals(buttons[4]))
-     				{
-     					System.out.println("4");
-     				}
-     				
-     				if(source.equals(buttons[5]))
-     				{
-     					System.out.println("5");
-     				}
-     			}
-             });
-             
-             keysContent.add(buttons[i]);
+            @Override public void keyPressed(KeyEvent event) 
+            {
+            	selectedButton.setText(Integer.toString(event.getKeyCode()));
+            }
+        };
+        
+        XmlConverter converter = (XmlConverter) applicationContext.getBean("XMLConverter");
+	      
+        try
+        {
+			map = (KeyMap)converter.convertFromXMLToObject(Main.keyBindings);
+		} 
+        
+        catch(IOException error) 
+        {
+			logger.error(error.getMessage());
+		}
+        
+        String[] names = {Integer.toString(map.getJump()), Integer.toString(map.getMoveLeft()), Integer.toString(map.getMoveRight()), Integer.toString(map.getBackKey()), Integer.toString(map.getSwitchPlayer()), Integer.toString(map.getTradeItem()), Integer.toString(map.getPerformanceInfo())};
+        
+        for(int i = 0; i < buttons.length; i++)
+        {
+        	buttons[i] = new JButton(names[i]);
+        	buttons[i].addKeyListener(keyPicker);
+        	buttons[i].addActionListener(new ActionListener() 
+        	{
+                @Override
+                public void actionPerformed(ActionEvent event) 
+                {
+                    selectedButton = (JButton) event.getSource();
+                }
+            });
+        	
+        	keysContent.add(buttons[i]);
         }
     }
 }
