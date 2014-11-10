@@ -24,6 +24,7 @@ import javax.annotation.PostConstruct;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import nl.dalthow.etaron.base.Main;
@@ -85,6 +86,7 @@ public class Keys
 	    		try 
 	    		{
 					converter.convertFromObjectToXML(map, Main.keyBindings);
+					JOptionPane.showMessageDialog(null, "Key bindings are stored on your locale machine in this build.", "Warning", JOptionPane.WARNING_MESSAGE);
 					Main.map = map;
 					
 					logger.info("Saving keybindings file.");
