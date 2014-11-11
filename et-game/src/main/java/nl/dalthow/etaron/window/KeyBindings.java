@@ -144,7 +144,7 @@ public class KeyBindings
 			logger.error(error.getMessage(), error);
 		}
         
-        String[] values = {Integer.toString(map.getJump()), Integer.toString(map.getMoveLeft()), Integer.toString(map.getMoveRight()), Integer.toString(map.getBackKey()), Integer.toString(map.getSwitchPlayer()), Integer.toString(map.getTradeItem()), Integer.toString(map.getPerformanceInfo())};
+        String[] values = {Integer.toString(map.getJump()), Integer.toString(map.getBackKey()), Integer.toString(map.getMoveLeft()), Integer.toString(map.getMoveRight()), Integer.toString(map.getSwitchPlayer()), Integer.toString(map.getPerformanceInfo()), Integer.toString(map.getTradeItem())};
         String[] names = {"Jump", "Back", "Left", "Right", "Switch", "Info", "Trade"};
         
         for(int i = 0; i < buttons.length; i++)
