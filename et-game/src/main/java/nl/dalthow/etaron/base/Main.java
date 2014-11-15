@@ -194,7 +194,6 @@ public class Main extends Canvas implements Runnable
         easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_CAVEMAN));
         easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_THE_FALL));
         easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_INVADERS));
-        easyLevelPage.add(resourceLoader.get(ImageResource.LEVEL_TWINS));
         
         mediumLevelPage.add(resourceLoader.get(ImageResource.LEVEL_UNDER_FIRE));
        

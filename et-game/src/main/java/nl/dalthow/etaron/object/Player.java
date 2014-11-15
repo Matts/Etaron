@@ -156,7 +156,7 @@ public class Player extends WorldObject
                 {
                     yPos = temporaryObject.getPosY() - playerHeight;
                     yVel = 0;
-
+                    
                     isJumping = false;
                     isFalling = false;
                 }
@@ -237,6 +237,8 @@ public class Player extends WorldObject
                 {
                     soundHandler.loadSound(SoundResource.BOING);
                     soundHandler.soundClip.start();
+                    
+                    this.isJumping = true;
                 }
             } 
             

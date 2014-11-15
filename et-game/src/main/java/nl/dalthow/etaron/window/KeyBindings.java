@@ -162,7 +162,7 @@ public class KeyBindings
                 }
             });
         	
-        	buttons[i].setBounds(65, 15 + (35 * i), 55, 25);
+        	buttons[i].setBounds(175, 15 + (35 * i), 55, 25);
         	labels[i].setBounds(15, 15 + (35 * i), 55, 25);
         	
         	keysContent.add(buttons[i]);
