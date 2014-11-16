@@ -147,9 +147,9 @@ public class KeyHandler extends KeyAdapter
 				Player oldKeyHolder = (Player) Main.getCameraFocus();
 				Player newKeyHolder;
 				
-				for(int j = 0; j < objectHandler.objects.size(); j++)
+				for(int i = 0; i < objectHandler.objects.size(); i++)
 				{
-					WorldObject temporaryObject = objectHandler.objects.get(j);
+					WorldObject temporaryObject = objectHandler.objects.get(i);
 					
 					if(temporaryObject.getId() == Identifier.PLAYER)
 					{
