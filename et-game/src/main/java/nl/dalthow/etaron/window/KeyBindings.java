@@ -54,8 +54,8 @@ public class KeyBindings
 	@Autowired
     private ApplicationContext applicationContext;
 	
-	private JButton[] buttons = new JButton[7];
-	private JLabel[] labels = new JLabel[7];
+	private JButton[] buttons = new JButton[8];
+	private JLabel[] labels = new JLabel[8];
     
 	private KeyMap map;
 	private JButton selectedButton;
@@ -82,6 +82,7 @@ public class KeyBindings
 	    		map.setSwitchPlayer(Integer.parseInt(buttons[4].getText()));
 	    		map.setPerformanceInfo(Integer.parseInt(buttons[5].getText()));
 	    		map.setTradeItem(Integer.parseInt(buttons[6].getText()));
+	    		map.setDropItem(Integer.parseInt(buttons[7].getText()));
 	    		
 	    		try 
 	    		{
@@ -144,8 +145,8 @@ public class KeyBindings
 			logger.error(error.getMessage(), error);
 		}
         
-        String[] values = {Integer.toString(map.getJump()), Integer.toString(map.getBackKey()), Integer.toString(map.getMoveLeft()), Integer.toString(map.getMoveRight()), Integer.toString(map.getSwitchPlayer()), Integer.toString(map.getPerformanceInfo()), Integer.toString(map.getTradeItem())};
-        String[] names = {"Jump", "Back", "Left", "Right", "Switch", "Info", "Trade"};
+        String[] values = {Integer.toString(map.getJump()), Integer.toString(map.getBackKey()), Integer.toString(map.getMoveLeft()), Integer.toString(map.getMoveRight()), Integer.toString(map.getSwitchPlayer()), Integer.toString(map.getPerformanceInfo()), Integer.toString(map.getTradeItem()), Integer.toString(map.getDropItem())};
+        String[] names = {"Jump", "Back", "Left", "Right", "Switch", "Info", "Trade", "Drop"};
         
         for(int i = 0; i < buttons.length; i++)
         {

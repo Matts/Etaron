@@ -84,7 +84,7 @@ public class XmlConverter
 		
 		finally 
 		{
-			if(inputStream != null) 
+			if(inputStream != null)
 			{
 				inputStream.close();
 			}

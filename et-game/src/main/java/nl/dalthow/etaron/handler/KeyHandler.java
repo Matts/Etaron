@@ -170,7 +170,7 @@ public class KeyHandler extends KeyAdapter
 				}
 			}
 			
-			if(currentKey == KeyEvent.VK_R)
+			if(currentKey == Main.map.getDropItem())
 			{
 				Player player = (Player) Main.getCameraFocus();
 				

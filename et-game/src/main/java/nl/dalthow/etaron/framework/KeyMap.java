@@ -15,6 +15,7 @@ public class KeyMap
 	private int moveRight;
 	private int moveLeft;
 	private int tradeItem;
+	private int dropItem;
 	private int switchPlayer;
 	private int backKey;
 	private int performanceInfo;
@@ -87,5 +88,15 @@ public class KeyMap
 	public void setPerformanceInfo(int performanceInfo) 
 	{
 		this.performanceInfo = performanceInfo;
+	}
+
+	public int getDropItem()
+	{
+		return dropItem;
+	}
+
+	public void setDropItem(int dropItem)
+	{
+		this.dropItem = dropItem;
 	}
 }

@@ -18,6 +18,10 @@
 			<bind-xml name="tradeItem" node="attribute"/>
 		</field>
 		
+		<field name="dropItem" type="integer">
+			<bind-xml name="dropItem" node="attribute"/>
+		</field>
+		
 		<field name="switchPlayer" type="integer">
 			<bind-xml name="switchPlayer" node="attribute"/>
 		</field>
