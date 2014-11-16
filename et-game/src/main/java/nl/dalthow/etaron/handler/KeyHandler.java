@@ -158,9 +158,8 @@ public class KeyHandler extends KeyAdapter
 				{
 					cameraShouldFocus.setVelX(0);
 
-					if(i < objectHandler.players.size())
+					if(i < objectHandler.players.size() - 1)
 					{
-						cameraShouldFocus = objectHandler.players.get(i);
 						i++;
 					}
 
@@ -169,6 +168,8 @@ public class KeyHandler extends KeyAdapter
 						i = 0;
 					}
 
+					cameraShouldFocus = objectHandler.players.get(i);
+					
 					Main.setCameraFocus(cameraShouldFocus);
 				}
 			}
