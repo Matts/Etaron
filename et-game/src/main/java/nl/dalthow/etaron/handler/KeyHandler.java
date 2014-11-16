@@ -13,6 +13,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import nl.dalthow.etaron.base.Main;
+import nl.dalthow.etaron.framework.Identifier;
 import nl.dalthow.etaron.framework.State;
 import nl.dalthow.etaron.framework.WorldObject;
 import nl.dalthow.etaron.object.Player;
@@ -89,6 +90,7 @@ public class KeyHandler extends KeyAdapter
 	}
 
 	// Gets triggered when a key on the keyboard is released
+
 	int i = 0;
 
 	public void keyReleased(KeyEvent event)
@@ -141,48 +143,12 @@ public class KeyHandler extends KeyAdapter
 
 			if(currentKey == Main.map.getTradeItem())
 			{
-				Player oldKeyHolder;
+				Player oldKeyHolder = objectHandler.players.get(i);
 				Player newKeyHolder;
 
-				if(Main.getCameraFocus().equals(objectHandler.players.getFirst()))
+				for(int i = 0; i < objectHandler.objects.size(); i++)
 				{
-					oldKeyHolder = (Player) objectHandler.players.getFirst();
-					newKeyHolder = (Player) objectHandler.players.getLast();
-
-					if(oldKeyHolder.getUpdateBounds().intersects(newKeyHolder.getUpdateBounds()))
-					{
-						if(oldKeyHolder.hasKey && newKeyHolder.hasKey)
-						{
-							return;
-						}
-
-						else if(oldKeyHolder.hasKey)
-						{
-							oldKeyHolder.hasKey = false;
-							newKeyHolder.hasKey = true;
-						}
-					}
-				}
-
-				else
-				{
-					oldKeyHolder = (Player) objectHandler.players.getLast();
-					newKeyHolder = (Player) objectHandler.players.getFirst();
-
-					if(oldKeyHolder.getUpdateBounds().intersects(newKeyHolder.getUpdateBounds()))
-					{
-						if(oldKeyHolder.hasKey && newKeyHolder.hasKey)
-						{
-							return;
-						}
-
-						else if(oldKeyHolder.hasKey)
-						{
-
-							oldKeyHolder.hasKey = false;
-							newKeyHolder.hasKey = true;
-						}
-					}
+					WorldObject temporaryObject = objectHandler.objects.get(i);
 				}
 			}
 
