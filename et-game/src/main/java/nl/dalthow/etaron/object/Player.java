@@ -40,6 +40,8 @@ public class Player extends WorldObject
     private float playerGravity;
     
     public boolean hasKey;
+    
+    public int pickUpDelay;
    
     @Autowired
     private ObjectHandler handler;
@@ -71,6 +73,7 @@ public class Player extends WorldObject
         maximumVelocity = 15F;
         
         hasKey = false;
+        pickUpDelay = 0;
     }
 
 
@@ -84,6 +87,11 @@ public class Player extends WorldObject
         if(yVel <= 0) 
         {
             isFalling = true;
+        }
+        
+        if(pickUpDelay > 0)
+        {
+        	pickUpDelay--;
         }
 
         for(int i = 0; i < objectList.size(); i++) 
@@ -187,7 +195,7 @@ public class Player extends WorldObject
             
             else if(temporaryObject.getId() == Identifier.KEY)
             {
-                if(getBounds().intersects(temporaryObject.getBounds()) && hasKey == false) 
+                if(getBounds().intersects(temporaryObject.getBounds()) && hasKey == false && pickUpDelay == 0) 
                 {
                 	hasKey = true;
                 	

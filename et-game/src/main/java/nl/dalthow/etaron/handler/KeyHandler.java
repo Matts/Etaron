@@ -16,6 +16,7 @@ import nl.dalthow.etaron.base.Main;
 import nl.dalthow.etaron.framework.Identifier;
 import nl.dalthow.etaron.framework.State;
 import nl.dalthow.etaron.framework.WorldObject;
+import nl.dalthow.etaron.object.Item;
 import nl.dalthow.etaron.object.Player;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -143,12 +144,42 @@ public class KeyHandler extends KeyAdapter
 
 			if(currentKey == Main.map.getTradeItem())
 			{
-				Player oldKeyHolder = objectHandler.players.get(i);
+				Player oldKeyHolder = (Player) Main.getCameraFocus();
 				Player newKeyHolder;
-
-				for(int i = 0; i < objectHandler.objects.size(); i++)
+				
+				for(int j = 0; j < objectHandler.objects.size(); j++)
 				{
-					WorldObject temporaryObject = objectHandler.objects.get(i);
+					WorldObject temporaryObject = objectHandler.objects.get(j);
+					
+					if(temporaryObject.getId() == Identifier.PLAYER)
+					{
+						if(oldKeyHolder.getUpdateBounds().intersects(temporaryObject.getBounds()))
+						{
+							newKeyHolder = (Player)temporaryObject;
+							
+							if(!oldKeyHolder.equals(newKeyHolder))
+							{
+								if(oldKeyHolder.hasKey)
+								{
+									newKeyHolder.hasKey = true;
+									oldKeyHolder.hasKey = false;
+								}
+							}
+						}
+					}
+				}
+			}
+			
+			if(currentKey == KeyEvent.VK_R)
+			{
+				Player player = (Player) Main.getCameraFocus();
+				
+				if(player.hasKey)
+				{
+					player.hasKey = false;
+					player.pickUpDelay = 120;
+					
+					objectHandler.addObject(new Item((int)player.getPosX(), (int)player.getPosY() + 32, 0, Identifier.KEY, false));
 				}
 			}
 
