@@ -20,8 +20,6 @@ public abstract class WorldObject
 	protected float xPos, yPos;
 	protected float xVel, yVel;
 	
-	protected int facing;
-	
 	protected boolean isJumping;
 	protected boolean isFalling;
 	
@@ -39,8 +37,6 @@ public abstract class WorldObject
 		
 		this.isJumping = false;
 		this.isFalling = false;
-		
-		this.facing = 0;
 		
 		this.id = id;
 		
@@ -95,12 +91,7 @@ public abstract class WorldObject
 	{
 		return id;
 	}
-	
-	public int getFacing()
-	{
-		return facing;
-	}
-	
+
 	public boolean getSolid()
 	{
 		return isSolid;
@@ -137,11 +128,6 @@ public abstract class WorldObject
 	public void setFalling(boolean isFalling) 
 	{
 		this.isFalling = isFalling;
-	}
-	
-	public void setFacing(int facing)
-	{
-		this.facing = facing;
 	}
 	
 	public void setSolid(boolean isSolid)

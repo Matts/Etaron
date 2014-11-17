@@ -65,13 +65,11 @@ public class KeyHandler extends KeyAdapter
 					if(currentKey == Main.map.getMoveRight())
 					{
 						temporaryObject.setVelX(Main.playerMovementSpeed);
-						temporaryObject.setFacing(1);
 					}
 
 					if(currentKey == Main.map.getMoveLeft())
 					{
 						temporaryObject.setVelX(-Main.playerMovementSpeed);
-						temporaryObject.setFacing(0);
 					}
 
 					if(currentKey == Main.map.getPerformanceInfo())
