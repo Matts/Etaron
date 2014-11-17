@@ -163,6 +163,8 @@ public class KeyHandler extends KeyAdapter
 								{
 									newKeyHolder.hasKey = true;
 									oldKeyHolder.hasKey = false;
+									
+									break;
 								}
 							}
 						}

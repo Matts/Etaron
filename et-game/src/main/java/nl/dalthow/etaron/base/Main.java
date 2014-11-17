@@ -574,7 +574,7 @@ public class Main extends Canvas implements Runnable
     
     // Draws a string with new lines on the canvas
     
-    void drawString(Graphics graphics, String text, int xPos, int yPos) 
+    private void drawString(Graphics graphics, String text, int xPos, int yPos) 
     {
         for(String line : text.split("\n"))
         {
