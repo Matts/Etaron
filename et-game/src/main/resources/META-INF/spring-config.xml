@@ -15,11 +15,11 @@
     </bean>
     
     <bean id="XMLConverter" class="nl.dalthow.etaron.framework.XmlConverter">
-		<property name="marshaller" ref="castorMarshaller" />
-		<property name="unmarshaller" ref="castorMarshaller" />
+		<property name="marshaller" ref="castorMarshaller"/>
+		<property name="unmarshaller" ref="castorMarshaller"/>
 	</bean>
 	
-	<bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller" >
+	<bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller">
 		<property name="mappingLocation" value="classpath:META-INF/mapping.xml" />
 	</bean>
 	
