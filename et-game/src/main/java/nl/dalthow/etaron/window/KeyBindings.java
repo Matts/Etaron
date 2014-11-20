@@ -3,7 +3,7 @@
  *
  *
  * @Author Dalthow Game Studios 
- * @Class KeysBindings.java
+ * @Class KeyBindings.java
  *
  **/
 

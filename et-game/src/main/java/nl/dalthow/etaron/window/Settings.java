@@ -82,7 +82,7 @@ public class Settings
         musicVolumeSlider = new JSlider(JSlider.HORIZONTAL, 0, 10, 0);
         soundVolumeSlider = new JSlider(JSlider.HORIZONTAL, 0, 10, 0);
 
-        keyBindings = new JButton("Keys");
+        keyBindings = new JButton("Keys Bindings");
         
         frame.pack();
         frame.add(settingsContent);
@@ -146,7 +146,7 @@ public class Settings
         soundVolumeSlider.setPaintLabels(true);
         settingsContent.add(soundVolumeSlider);
         
-        keyBindings.setBounds(87, 180, 75, 25);
+        keyBindings.setBounds(67, 180, 115, 25);
         keyBindings.addActionListener(new ActionListener()
         {
 			@Override
