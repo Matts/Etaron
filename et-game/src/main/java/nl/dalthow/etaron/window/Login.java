@@ -108,9 +108,9 @@ public class Login
             }
         });
 
-        Image image = Toolkit.getDefaultToolkit().createImage(ClassLoader.getSystemResource("global/icon.png"));
+        Image icon = Toolkit.getDefaultToolkit().createImage(ClassLoader.getSystemResource("global/icon.png"));
         
-        frame.setIconImage(image);
+        frame.setIconImage(icon);
 
         placeComponents(credentialContent);
     }

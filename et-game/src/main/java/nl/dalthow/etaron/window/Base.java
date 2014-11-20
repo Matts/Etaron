@@ -59,9 +59,9 @@ public class Base
             }
         });
         
-        Image image = Toolkit.getDefaultToolkit().createImage(ClassLoader.getSystemResource("global/icon.png"));
+        Image icon = Toolkit.getDefaultToolkit().createImage(ClassLoader.getSystemResource("global/icon.png"));
         
-        frame.setIconImage(image);
+        frame.setIconImage(icon);
 
         main.title = title;
         main.version = version;

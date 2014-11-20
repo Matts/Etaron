@@ -91,9 +91,9 @@ public class Settings
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.setResizable(false);
         
-        Image image = Toolkit.getDefaultToolkit().createImage(ClassLoader.getSystemResource("global/icon.png"));
+        Image icon = Toolkit.getDefaultToolkit().createImage(ClassLoader.getSystemResource("global/icon.png"));
         
-        frame.setIconImage(image);
+        frame.setIconImage(icon);
     }
 
     // Initialises all the components used in the window after spring creates the instance

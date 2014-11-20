@@ -109,9 +109,9 @@ public class KeyBindings
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.setResizable(false);
 	  
-        Image image = Toolkit.getDefaultToolkit().createImage(ClassLoader.getSystemResource("global/icon.png"));       
+        Image icon = Toolkit.getDefaultToolkit().createImage(ClassLoader.getSystemResource("global/icon.png"));       
 	   
-	    frame.setIconImage(image);
+	    frame.setIconImage(icon);
     }
 	
 	public void show() 
